@@ -1,0 +1,21 @@
+<div class="navbar-logo">后台管理系统</div>
+<ul class="layui-nav layui-nav-tree" lay-filter="leftNavbar">
+    <li class="layui-nav-item layui-nav-itemed">
+        <a <% if(locals.page == "home"){ %>
+            class="layui-this"
+        <% } %> href="/home"><i class="layui-icon layui-icon-home"></i><span>首页</span></a>
+    </li>
+    <li class="layui-nav-item layui-nav-itemed">
+        <a <% if(locals.page == "friendLink"){ %>
+            class="layui-this"
+        <% } %> href="/friendLink"><i class="layui-icon layui-icon-link"></i><span>友情链接</span></a>
+    </li>
+    <li class="layui-nav-item layui-nav-itemed">
+        <a href="javascript:void(0);"><i class="layui-icon layui-icon-set"></i><span>设置</span></a>
+        <dl class="layui-nav-child">
+            <dd <% if(locals.page == "adminMessage"){ %>
+                class="layui-this"
+            <% } %> ><a href="/adminMessage"><span>个人资料</span></a></dd>
+        </dl>
+    </li>
+</ul>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>后台管理系统</title>
+        <link rel='stylesheet' href='/stylesheets/index.css' />
+        <link rel='stylesheet' href='/stylesheets/header.css' />
+        <link rel='stylesheet' href='/stylesheets/home.css' />
+        <link rel='stylesheet' href='/stylesheets/adminMessage.css' />
+        <link rel='stylesheet' href='/stylesheets/friendLink.css' />
+        <link rel="stylesheet" href="/layui/css/layui.css">   
+        <link rel="shortcut icon" href="#" /> 
+    </head>
+    <body>
+        <div class="indexPage">
+
+            <div class="indexPage-navbar">
+                <% include ../component/navbar %>
+            </div>
+
+            <div class="indexPage-right">
+                <% include ../component/header %>
+                <div class="indexPage-content">
+                    <div class="indexPage-bread">
+                        <span></span>
+
+                        <span class="layui-breadcrumb">
+                            <% locals.title.split('-').forEach(function(ele,index,arr){  
+                                if(index==arr.length-1){ %>
+                                    <a><cite><%= ele %></cite></a>
+                                <% }else{ %>
+                                    <a href=""><%= ele %></a>
+                                <% } 
+                            }) %>
+                        </span>
+                    </div>
+                    <div class="indexPage-message">
+
+                        <!-- 主页 -->
+                        <% if(locals.page == 'home'){ %>
+                            <% include ./bhome %>
+                        <% } %>
+
+                        <!-- 友情链接 -->
+                        <% if(locals.page == 'friendLink'){ %>
+                            <% include ./friendLink %>
+                        <% } %>
+
+                        <!-- 个人资料 -->
+                        <% if(locals.page == 'adminMessage'){ %>
+                            <% include ./adminMessage %>
+                        <% } %>
+                        
+
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </body>
+</html>
+<script src="/layui/layui.js"></script>
+<script src="/jquery/jquery-3.4.1.min.js"></script>
+<script src="/javascript/friendLink.js"></script>
+<script src="/javascript/adminMessage.js"></script>
+<script>
+    // 左侧导航
+    layui.use('element');
+
+    //退出
+    // $('.header-exit').off('click').on('click',function(){
+    //     layer.open({
+    //         title:'提示',
+    //         btn: ['确定', '取消'],
+    //         content: '您确定退出登录吗？',
+    //         yes:function(index, layero){
+    //             delCookie('user')
+    //             layer.close(index)
+    //             window.location.href = '/login'
+    //         },
+    //         no:function(index, layero){
+    //             layer.close(index)
+    //         }
+    //     });
+    // })
+
+    // function getCookie(name){
+    //     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+    //     if(arr=document.cookie.match(reg))
+    //         return unescape(arr[2]);
+    //     else
+    //         return null;
+    // }
+    // function delCookie(name){
+    //     var exp = new Date();
+    //         exp.setTime(exp.getTime() - 1);
+    //     var cval=getCookie(name);
+    //     if(cval!=null)
+    //         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    // }
+</script>

@@ -1,0 +1,15 @@
+.header{
+    height: 61px;
+    font-size: 20px;
+    line-height: 61px;
+    background: rgb(57, 61, 73);
+    color: rgb(189, 189, 192);
+}
+.header .layui-nav{
+    text-align: right;
+    width: 100%;
+    background: rgb(57, 61, 73);
+}
+.header .layui-nav dd{
+    text-align: center;
+}

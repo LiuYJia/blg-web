@@ -1,0 +1,70 @@
+html,body{
+    height: 100%;
+    color: #343434;
+    box-sizing: border-box;
+}
+.indexPage{
+    height: 100%;
+}
+.indexPage-right{
+    width: calc(100% - 300px);
+    height: 100%;
+    float: left;
+}
+.indexPage-navbar{
+    width: 300px;
+    height: 100%;
+    float: left;
+}
+.indexPage-content{
+    width: 100%;
+    height: calc(100% - 61px);
+}
+.indexPage .layui-nav{
+    background: rgb(32, 34, 42);
+}
+.indexPage .layui-nav-tree{
+    width: 100%;
+    height: calc(100% - 61px);
+    border-radius: 0;
+}
+.indexPage-navbar a{
+    /* text-align: center; */
+}
+.indexPage-navbar i{
+    /* text-align: center; */
+    margin-right: 20px;
+}
+.indexPage-navbar .layui-nav-child span{
+    margin-left: 35px;
+}
+.indexPage-content{
+    background: rgb(223, 223, 223);
+}
+.indexPage-message{
+    background: white;
+    width: calc(100% - 40px);
+    margin: 20px  20px 0 20px;
+    height: calc(100% - 60px);
+} 
+.indexPage-bread{
+    background: white;
+    height: 40px;
+    line-height: 40px;
+}
+.indexPage-bread span:first-child{
+    margin-left: 20px;
+    margin-right: 10px;
+    width: 5px;
+    height: 16px;
+    border-left: 3px solid rgb(0, 119, 213);
+} 
+.navbar-logo{
+    height: 60px;
+    background-color: rgb(32, 34, 42);
+    color: white;
+    text-align: center;
+    line-height: 60px;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(22, 24, 29);
+}

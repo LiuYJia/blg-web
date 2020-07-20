@@ -1,0 +1,16 @@
+.friendLinkList{
+    height: calc(100% - 40px);
+    padding: 20px 20px;
+}
+.friendLinkListSearch{
+    height: 60px;
+}
+.friendLinkListTableDiv{
+    height: calc(100% - 140px);
+}
+.friendLinkListSearch{
+    display: flex;
+}
+.friendLinkList .layui-form-item button{
+    margin-left: 50px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>欢迎登陆</title>
+        <link rel='stylesheet' href='/stylesheets/login.css' />
+        <link rel="stylesheet" href="/layui/css/layui.css">    
+        <link rel="shortcut icon" href="#" /> 
+    </head>
+    <body>
+        <div class="login">
+            <div class="login-form">
+                <h2 class="login-form-title">后 台 管 理 系 统</h2>
+                <form class="layui-form  layui-form-pane">
+                    <div class="layui-form-item">
+                        <label for="" class="layui-form-label">账号：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="userName" required lay-verify="userName"  lay-verify="required" placeholder="请输入账号" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label for="" class="layui-form-label">密码：</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="password" required lay-verify="password"  lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-item-btn">
+                        <button type="button" class="layui-btn layui-btn-sm login-btn" lay-submit lay-filter="login-btn">登  陆</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script src="/layui/layui.js"></script>
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script>
+        
+        // 回车键触发表单提交
+        $(document).off('keydown').on('keydown',function(e){
+            if(e.keyCode==13){
+                $('.login .login-btn').trigger('click')
+            }
+        })
+
+        layui.use('form', function(){
+
+            var form = layui.form;
+            //监听提交
+            form.on('submit(login-btn)', function(data){
+                console.log(data.field)
+                return
+                $.ajax({
+                    type:'post',
+                    url:'/login',
+                    data:data.field,
+                    success:function(d){
+                        if(d.code==200){
+                            window.location.href = 'home'
+                        }else{
+                            layer.msg(d.msg, {icon: 5});
+                        }
+                    }
+                });
+            });
+
+            //自定义验证规则
+            form.verify({
+                userName: function(value){
+                    if(value.length == 0){
+                        return '请输入账号';
+                    }
+                },
+                passWord: function(value){
+                    if(value.length == 0){
+                        return '请输入密码';
+                    }
+                }
+                // userPassword: [
+                //     /^[\S]{6,12}$/,
+                //     '密码必须6到12位，且不能出现空格'
+                // ]
+            });
+        });
+    </script>
+</html>

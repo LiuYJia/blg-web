@@ -1,0 +1,40 @@
+<div class="friendLinkList">
+
+    <div class="friendLinkListSearch friendLinkListTable">
+            <div class="layui-form-item">
+                <label class="layui-form-label">标题</label>
+                <div class="layui-input-block">
+                    <input type="text" id="friendLinkListTitle" name="title" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" data-type="reload">搜索</button>
+            </div>
+    </div>
+    <div class="friendLinkListTableDiv">
+        <div class="layui-btn-group friendLinkListTable">
+            <button class="layui-btn" data-type="add">新增</button>
+            <button class="layui-btn" data-type="edit">编辑</button>
+            <button class="layui-btn" data-type="delete">删除</button>
+        </div>
+        
+        <table class="layui-table" lay-data="{ url:'/friendLink/getList', id:'idfriendLinkListTable',limit:10,height:'full-300',cellMinWidth: 50, page:{layout: ['count', 'prev', 'page', 'next', 'skip']}}" lay-filter="friendLinkListTable">
+            <thead>
+                <tr>
+                <th lay-data="{type:'checkbox'}"></th>
+                <!-- <th lay-data="{field:'index',width:50,templet:'#indexTpl'}">序号</th> -->
+                <th lay-data="{field:'indexTpl',width:50,type:'numbers'}">序号</th>
+                <th lay-data="{field:'title',width:300}">标题</th>
+                <th lay-data="{field:'content'}">文章内容</th>
+                <th lay-data="{field:'date',width:160}">日期</th>
+                <th lay-data="{field:'author'}">作者</th>
+                <th lay-data="{field:'sort'}">类别</th>
+                <th lay-data="{field:'browse_times'}">浏览次数</th>
+                </tr>
+            </thead>
+        </table>
+        <script type="text/html" id="indexTpl">
+            {{d.LAY_TABLE_INDEX+1}}
+        </script>
+    </div>
+</div>

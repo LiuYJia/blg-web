@@ -1,0 +1,23 @@
+.home{
+    height: 100%;
+    overflow: auto;
+}
+.home-card{
+    height: auto;
+    overflow: hidden;
+    padding: 20px 20px;
+}
+.home .layui-card{
+    float: left;
+    width: 200px;
+    margin-right: 20px;
+}
+.home .layui-card-header{
+    border-top: 1px solid #f6f6f6;
+}
+.home .layui-card i{
+    float: right;
+}
+.home .home-echarts{
+    padding: 20px 20px;
+}
