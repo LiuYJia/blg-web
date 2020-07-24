@@ -6,8 +6,7 @@ router.get('/' , function(req,res,next){
     res.render('backend/index',{
         title:'首页',
         page:'home',
-        user:'admin'
-        // user:req.cookies.user
+        user:req.cookies.user
     })
 })
 

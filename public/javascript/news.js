@@ -10,7 +10,7 @@ layui.use('table', function(){
             handelLink(1)
         },
         edit: function(){ //编辑
-            var checkStatus = table.checkStatus('idfriendLinkListTable'),data = checkStatus.data;
+            var checkStatus = table.checkStatus('idnewsListTable'),data = checkStatus.data;
             if(data.length==0){
                 layer.msg('请选择一条记录',{icon:5});
                 return
@@ -22,7 +22,7 @@ layui.use('table', function(){
             handelLink(2,data[0])
         },
         delete: function(){ //删除
-            var checkStatus = table.checkStatus('idfriendLinkListTable'),data = checkStatus.data;
+            var checkStatus = table.checkStatus('idnewsListTable'),data = checkStatus.data;
             if(data.length==0){
                 layer.msg('请选择一条记录',{icon:5});
                 return
@@ -32,13 +32,13 @@ layui.use('table', function(){
                 arr.push(e.id)
             });
             $.ajax({
-                url:'/friendLink/delelte',
+                url:'/news/delelte',
                 type:'post',
                 data:{ids:arr.join(',')},
                 success:function(d){
                     if(d.code==200){
                         layer.msg(d.msg,{icon:1});
-                        table.reload('idfriendLinkListTable', {
+                        table.reload('idnewsListTable', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             },
@@ -56,20 +56,20 @@ layui.use('table', function(){
         },
         reload: function(){
             //执行重载
-            table.reload('idfriendLinkListTable', {
+            table.reload('idnewsListTable', {
                 page: {
                     curr: 1 //重新从第 1 页开始
                 },
                 where: {
                     key: {
-                        title: $('#friendLinkListTitle').val()
+                        title: $('#newsListTitle').val()
                     }
                 }
             }, 'data');
           }
     };
     
-    $('.friendLinkListTable .layui-btn').on('click', function(){
+    $('.newsListTable .layui-btn').on('click', function(){
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
@@ -81,7 +81,7 @@ layui.use('table', function(){
 
 function handelLink(_type,checkData){
     var _html = `
-        <div class="layui-form addFriendLink" lay-filter="addFriendLink">
+        <div class="layui-form addnews" lay-filter="addnews">
             <div class="layui-form-item">
                 <label class="layui-form-label">网站名称</label>
                 <div class="layui-input-block">
@@ -111,7 +111,7 @@ function handelLink(_type,checkData){
         btn: ['保存', '取消'],
         content: _html,
         yes:function(layerindex){
-            var data = layuiForm.val("addFriendLink");
+            var data = layuiForm.val("addnews");
             if(!data.webName || !data.webUrl || !data.link){
                 layer.msg('请完善信息',{icon:5});
                 return
@@ -121,14 +121,14 @@ function handelLink(_type,checkData){
                 data.id = _checkId
             }
             $.ajax({
-                url:'/friendLink/handelLink',
+                url:'/news/handelLink',
                 type:'post',
                 data:data,
                 success:function(d){
                     if(d.code==200){
                         layer.close(layerindex)
                         layer.msg(d.msg,{icon:1});
-                        table.reload('idfriendLinkListTable', {
+                        table.reload('idnewsListTable', {
                             page: {
                                 curr: 1 //重新从第 1 页开始
                             },
@@ -151,7 +151,7 @@ function handelLink(_type,checkData){
                 layuiForm = layui.form;
                 layuiForm.render()
                 if(_type == 2){
-                    layuiForm.val("addFriendLink", {
+                    layuiForm.val("addnews", {
                        "webName": checkData.web_name,
                        "webUrl": checkData.web_url,
                        "link": checkData.Inter_link == '是' ?  1 : 0

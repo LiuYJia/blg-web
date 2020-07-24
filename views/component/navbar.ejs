@@ -1,9 +1,19 @@
-<div class="navbar-logo">后台管理系统</div>
+<div class="navbar-logo"><i class="layui-icon layui-icon-website" style="font-size: 20px;margin-right: 0;"></i>  后台管理系统</div>
 <ul class="layui-nav layui-nav-tree" lay-filter="leftNavbar">
     <li class="layui-nav-item layui-nav-itemed">
         <a <% if(locals.page == "home"){ %>
             class="layui-this"
         <% } %> href="/home"><i class="layui-icon layui-icon-home"></i><span>首页</span></a>
+    </li>
+    <li class="layui-nav-item layui-nav-itemed">
+        <a <% if(locals.page == "product"){ %>
+            class="layui-this"
+        <% } %> href="/product"><i class="layui-icon layui-icon-app"></i><span>产品管理</span></a>
+    </li>
+    <li class="layui-nav-item layui-nav-itemed">
+        <a <% if(locals.page == "news"){ %>
+            class="layui-this"
+        <% } %> href="/news"><i class="layui-icon layui-icon-read"></i><span>资讯中心</span></a>
     </li>
     <li class="layui-nav-item layui-nav-itemed">
         <a <% if(locals.page == "friendLink"){ %>

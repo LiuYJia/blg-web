@@ -3,23 +3,23 @@ var router = express.Router();
 var db = require('../../database/database')
 
 router.get('/' , function(req,res,next){
-
-    res.render('backend/index', {
-        title: '友情链接',
-        page:'friendLink',
+    res.render('backend/index',{
+        title:'资讯中心',
+        page:'news',
         user:req.cookies.user
-    });
+    })
 })
+
 
 router.get('/getList' , function(req,res,next){
     if(req.query.key){
         var title = req.query.key.title
-        var _sql = 'select * from friend_link where 1 = 1';
+        var _sql = 'select * from news where 1 = 1';
         if(title){
-            _sql += ' and web_name like "%' + title +'%" '
+            _sql += ' and title like "%' + title +'%" '
         }
     }else{
-        var _sql = 'select * from friend_link'
+        var _sql = 'select * from news'
     }
     var page = Number(req.query.page)
     var limit = Number(req.query.limit)
@@ -30,8 +30,7 @@ router.get('/getList' , function(req,res,next){
             var _length = result.length
             var _result = result.splice(_start,limit)
             _result.forEach(ele => {
-                ele.connect_time = new Date(ele.connect_time).toLocaleString()
-                ele.inter_link = ele.inter_link==1 ? '是' : '否'
+                ele.time = new Date(ele.time).toLocaleString()
             });
             res.send({
                 code: 0,
@@ -55,11 +54,11 @@ router.post('/handelLink' , function(req,res,next){
     }
     db.on('connection',function(err){})
     if(!id){
-        var _sql = 'insert into friend_link (web_name,web_url,connect_time,inter_link) values (?,?,?,?)'
+        var _sql = 'insert into news (web_name,web_url,connect_time,inter_link) values (?,?,?,?)'
         var _sqlArr = [obj.webName,obj.webUrl,obj.date,obj.link]
 
     }else{
-        var _sql = 'update friend_link set web_name=?,web_url=?,connect_time=?,inter_link=? where id = ?'
+        var _sql = 'update news set web_name=?,web_url=?,connect_time=?,inter_link=? where id = ?'
         var _sqlArr = [obj.webName,obj.webUrl,obj.date,obj.link,id]
     }
     db.getConnection(function(err,connection){
@@ -105,5 +104,7 @@ router.post('/delelte' , function(req,res,next){
         })
     })
 })
+
+module.exports = router;
 
 module.exports = router;

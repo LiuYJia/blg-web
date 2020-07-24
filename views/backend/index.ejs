@@ -40,6 +40,16 @@
                             <% include ./bhome %>
                         <% } %>
 
+                        <!-- 产品展示 -->
+                        <% if(locals.page == 'product'){ %>
+                            <% include ./product %>
+                        <% } %>
+
+                        <!-- 资讯中心 -->
+                        <% if(locals.page == 'news'){ %>
+                            <% include ./news %>
+                        <% } %>
+
                         <!-- 友情链接 -->
                         <% if(locals.page == 'friendLink'){ %>
                             <% include ./friendLink %>
@@ -59,6 +69,7 @@
 </html>
 <script src="/layui/layui.js"></script>
 <script src="/jquery/jquery-3.4.1.min.js"></script>
+<script src="/javascript/news.js"></script>
 <script src="/javascript/friendLink.js"></script>
 <script src="/javascript/adminMessage.js"></script>
 <script>
@@ -66,34 +77,34 @@
     layui.use('element');
 
     //退出
-    // $('.header-exit').off('click').on('click',function(){
-    //     layer.open({
-    //         title:'提示',
-    //         btn: ['确定', '取消'],
-    //         content: '您确定退出登录吗？',
-    //         yes:function(index, layero){
-    //             delCookie('user')
-    //             layer.close(index)
-    //             window.location.href = '/login'
-    //         },
-    //         no:function(index, layero){
-    //             layer.close(index)
-    //         }
-    //     });
-    // })
+    $('.header-exit').off('click').on('click',function(){
+        layer.open({
+            title:'提示',
+            btn: ['确定', '取消'],
+            content: '您确定退出登录吗？',
+            yes:function(index, layero){
+                delCookie('user')
+                layer.close(index)
+                window.location.href = '/login'
+            },
+            no:function(index, layero){
+                layer.close(index)
+            }
+        });
+    })
 
-    // function getCookie(name){
-    //     var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-    //     if(arr=document.cookie.match(reg))
-    //         return unescape(arr[2]);
-    //     else
-    //         return null;
-    // }
-    // function delCookie(name){
-    //     var exp = new Date();
-    //         exp.setTime(exp.getTime() - 1);
-    //     var cval=getCookie(name);
-    //     if(cval!=null)
-    //         document.cookie= name + "="+cval+";expires="+exp.toGMTString();
-    // }
+    function getCookie(name){
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
+        if(arr=document.cookie.match(reg))
+            return unescape(arr[2]);
+        else
+            return null;
+    }
+    function delCookie(name){
+        var exp = new Date();
+            exp.setTime(exp.getTime() - 1);
+        var cval=getCookie(name);
+        if(cval!=null)
+            document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+    }
 </script>

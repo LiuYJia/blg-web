@@ -46,8 +46,6 @@
             var form = layui.form;
             //监听提交
             form.on('submit(login-btn)', function(data){
-                console.log(data.field)
-                return
                 $.ajax({
                     type:'post',
                     url:'/login',

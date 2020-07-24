@@ -17,9 +17,7 @@
                 url:'/home/historyAccess',
                 type:'get',
                 success:function(d){
-                    console.log(d)
                     var data = d.result.map(function(e){
-                        console.log(e)
                         var obj = {
                             name:new Date(e.date).toLocaleDateString(),
                             value:[new Date(e.date).toLocaleDateString(),e.num]
@@ -29,7 +27,6 @@
                     })
                     $('.home .layui-card-body span').text(totalNum)
                     renderEchart(data)
-                    console.log(data)
                 }
             })
             function renderEchart(renderdata){

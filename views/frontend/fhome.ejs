@@ -1,4 +1,158 @@
-<p>这里是首页</p>
-<%= title %>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>标题标题</title>
+        <meta name="Keywords" content="关键词关键" />
+        <meta name="Description" content="网页描述" />
+        <link rel='stylesheet' href='/stylesheets/fhome.css' />
+        <link rel="stylesheet" href="/layui/css/layui.css">    
+        <link rel="shortcut icon" href="#" /> 
+    </head>
+    <body>
+        <div class="fhome">
 
-<%= JSON.stringify(result) %>
+            <!-- 头部&导航栏 -->
+            <%- include ../component/fnavbar %>
+
+            <!-- 轮播图 -->
+            <div class="layui-carousel" id="fhome-carousel">
+                <div carousel-item>
+                    <img src="/images/test3.png" alt="">
+                    <img src="/images/test2.jpg" alt="">
+                    <img src="/images/test1.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- 数字信息 -->
+            <div class="fhome-num">
+                <div class="fhome-numItem">
+                    <p class="fhome-numItemT">2003</p>
+                    <p class="fhome-numItemB">成立</p>
+                </div>
+                <div class="fhome-numItem">
+                    <p class="fhome-numItemT">2000+</p>
+                    <p class="fhome-numItemB">服务</p>
+                </div>
+                <div class="fhome-numItem">
+                    <p class="fhome-numItemT">2000+</p>
+                    <p class="fhome-numItemB">客户</p>
+                </div>
+                <div class="fhome-numItem">
+                    <p class="fhome-numItemT">100+</p>
+                    <p class="fhome-numItemB">产品</p>
+                </div>
+            </div>
+
+            <!-- 产品列表 -->
+            <div class="fhome-block fhome-product">
+                <div class="fhome-blockInner">
+                    <div class="fhome-blockTitle">产品展示<span>| PRODUCT</span>
+                        <button class="layui-btn layui-btn-sm moreBtn-product">更多</button>
+                    </div>
+                    <div class="fhome-productMsg">
+
+                        <% for(var i=0;i<8;i++){ %>
+                            <div class="fhome-productItem">
+                                <img src="/images/test3.png" alt="">
+                                <div class="fhome-productItemTxt">
+                                    <h3>标题标题</h3>
+                                    <p>
+                                        这里是产品描述这里是产品描述这里是产品描述这里是产品描述
+                                        这里是产品描述这里是产品描述这品描
+                                    </p>
+                                </div>
+                            </div>
+                        <% } %>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关于我们 -->
+            <div class="fhome-block fhome-about">
+                <div class="fhome-blockInner">
+                    <div class="fhome-aboutTitle">
+                        <div>关于我们<span>| ABOUT</span></div>
+                    </div>
+                    <div class="fhome-aboutMsg">
+                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息
+                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息
+                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息
+                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息。
+                    </div>
+
+                    <button class="layui-btn layui-btn-sm moreBtn-about">更多</button>
+                    
+                    <img src="/images/login.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- 资讯中心 -->
+            <div class="fhome-block fhome-news">
+                <div class="fhome-blockInner">
+                    <div class="fhome-blockTitle">资讯中心<span>| NEWS</span>
+                        <button class="layui-btn layui-btn-sm moreBtn-news">更多</button>
+                    </div>
+                    <div class="fhome-newsMsg">
+
+                        <% for(var i=0;i<6;i++){ %>
+                            <div class="fhome-newsItem">
+                                <img src="/images/login.jpg" alt="">
+                                <div class="fhome-newsItemTxt">
+                                    <h3>标题标题</h3>
+                                    <div class="fhome-newsItemContent">
+                                        哈哈哈哈哈哈哈
+                                    </div>
+                                </div>
+                            </div>
+                        <% } %>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系我们 -->
+            <div class="fhome-block fhome-contact">
+                <div class="fhome-blockInner">
+                    <div class="fhome-blockTitle">联系我们<span>| CONTACT</span></div>
+                    <div class="fhome-blockContent fhome-blockContentContact">
+                        <div class="fhome-contactMsg">
+                            <div class="fhome-contactMsgTitle">名称名称名称名称</div>
+                            <ul>
+                                <li>地址：啊哈哈哈哈哈</li>
+                                <li>地址：啊哈哈哈哈哈</li>
+                                <li>地址：啊哈哈哈哈哈</li>
+                                <li>地址：啊哈哈哈哈哈</li>
+                                <li>地址：啊哈哈哈哈哈</li>
+                            </ul>
+                        </div>
+                        <div class="fhome-contactForm layui-form">
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item layui-form-text">
+                                <div class="layui-input-block">
+                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                </div>
+                            </div>
+                            <button class="layui-btn layui-btn">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部栏 -->
+            <div class="fhome-footer">
+                这里是底部
+            </div>
+            
+        </div>
+    </body>
+    <script src="/layui/layui.js"></script>
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script src="/javascript/fhome.js"></script>
+    <script>
+    </script>
+</html>

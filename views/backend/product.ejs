@@ -1,24 +1,24 @@
-<div class="friendLinkList">
+<div class="newsList">
 
-    <div class="friendLinkListSearch friendLinkListTable">
+    <div class="newsListSearch newsListTable">
             <div class="layui-form-item">
-                <label class="layui-form-label">网站名称</label>
+                <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
-                    <input type="text" id="friendLinkListTitle" name="title" class="layui-input">
+                    <input type="text" id="newsListTitle" name="title" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <button class="layui-btn" data-type="reload">搜索</button>
             </div>
     </div>
-    <div class="friendLinkListTableDiv">
-        <div class="layui-btn-group friendLinkListTable">
+    <div class="newsListTableDiv">
+        <div class="layui-btn-group newsListTable">
             <button class="layui-btn" data-type="add">新增</button>
             <button class="layui-btn" data-type="edit">编辑</button>
             <button class="layui-btn" data-type="delete">删除</button>
         </div>
         
-        <table class="layui-table" lay-data="{ url:'/friendLink/getList', id:'idfriendLinkListTable',limit:10,height:'full-300',cellMinWidth: 50, page:{layout: ['count', 'prev', 'page', 'next', 'skip']}}" lay-filter="friendLinkListTable">
+        <table class="layui-table" lay-data="{ url:'/news/getList', id:'idnewsListTable',limit:10,height:'full-300',cellMinWidth: 50, page:{layout: ['count', 'prev', 'page', 'next', 'skip']}}" lay-filter="newsListTable">
             <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>

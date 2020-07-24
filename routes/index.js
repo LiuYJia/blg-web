@@ -6,12 +6,24 @@ var router = express.Router();
  */
 router.use('/', require('./frontend/fhome'));// 主页
 
+router.use('/fproduct', require('./frontend/fproduct'));// 产品列表
+
+// router.use('/about', require('./frontend/about'));// 关于我们
+
+// router.use('/fnews', require('./frontend/news'));// 资讯中心
+
+// router.use('/contact', require('./frontend/contact'));// 联系我们
+
 /**
  * 后台路由
  */
 router.use('/login', require('./backend/login'));// 登陆
 
 router.use('/home', require('./backend/bhome'));// 主页
+
+router.use('/product', require('./backend/product'));// 产品展示
+
+router.use('/news', require('./backend/news'));// 资讯中心
 
 router.use('/friendLink', require('./backend/friendLink'));// 友情链接
 

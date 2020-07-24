@@ -11,6 +11,7 @@ router.get('/' , function(req,res,next){
         connection.query(_sql,function(err,result){
             res.render('frontend/fhome', {
                 title: '首页',
+                page:'fhome',
                 result:result
             });
             connection.release()

@@ -1,32 +1,32 @@
-<div class="friendLinkList">
+<div class="newsList">
 
-    <div class="friendLinkListSearch friendLinkListTable">
+    <div class="newsListSearch newsListTable">
             <div class="layui-form-item">
-                <label class="layui-form-label">网站名称</label>
+                <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
-                    <input type="text" id="friendLinkListTitle" name="title" class="layui-input">
+                    <input type="text" id="newsListTitle" name="title" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
                 <button class="layui-btn" data-type="reload">搜索</button>
             </div>
     </div>
-    <div class="friendLinkListTableDiv">
-        <div class="layui-btn-group friendLinkListTable">
+    <div class="newsListTableDiv">
+        <div class="layui-btn-group newsListTable">
             <button class="layui-btn" data-type="add">新增</button>
             <button class="layui-btn" data-type="edit">编辑</button>
             <button class="layui-btn" data-type="delete">删除</button>
         </div>
         
-        <table class="layui-table" lay-data="{ url:'/friendLink/getList', id:'idfriendLinkListTable',limit:10,height:'full-300',cellMinWidth: 50, page:{layout: ['count', 'prev', 'page', 'next', 'skip']}}" lay-filter="friendLinkListTable">
+        <table class="layui-table" lay-data="{ url:'/news/getList', id:'idnewsListTable',limit:10,height:'full-300',cellMinWidth: 50, page:{layout: ['count', 'prev', 'page', 'next', 'skip']}}" lay-filter="newsListTable">
             <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
                     <th lay-data="{field:'indexTpl',width:50,type:'numbers'}">序号</th>
-                    <th lay-data="{field:'web_name'}">网站名称</th>
-                    <th lay-data="{field:'web_url'}">网址</th>
-                    <th lay-data="{field:'connect_time'}">建立日期</th>
-                    <th lay-data="{field:'inter_link'}">是否互链</th>
+                    <th lay-data="{field:'title'}">标题</th>
+                    <th lay-data="{field:'sort'}">类别</th>
+                    <th lay-data="{field:'time'}">时间</th>
+                    <th lay-data="{field:'content'}">内容</th>
                 </tr>
             </thead>
         </table>
