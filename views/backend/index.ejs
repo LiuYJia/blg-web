@@ -73,10 +73,6 @@
     </body>
 </html>
 
-<script>
-    var result = '<%- JSON.stringify(result) %>';
-</script>
-
 <script src="/layui/layui.js"></script>
 <script src="/jquery/jquery-3.4.1.min.js"></script>
 
@@ -97,6 +93,9 @@
 <% } %>
 
 <% if(locals.page == 'productList'){ %>
+    <script>
+        var result = '<%- JSON.stringify(result) %>';
+    </script>
     <script src="/javascript/productList.js"></script>
 <% } %>
 
