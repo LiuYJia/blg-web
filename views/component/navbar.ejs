@@ -6,9 +6,15 @@
         <% } %> href="/home"><i class="layui-icon layui-icon-home"></i><span>首页</span></a>
     </li>
     <li class="layui-nav-item layui-nav-itemed">
-        <a <% if(locals.page == "product"){ %>
-            class="layui-this"
-        <% } %> href="/product"><i class="layui-icon layui-icon-app"></i><span>产品管理</span></a>
+        <a href="javascript:void(0);"><i class="layui-icon layui-icon-app"></i><span>产品管理</span></a>
+        <dl class="layui-nav-child">
+            <dd <% if(locals.page == "productSort"){ %>
+                class="layui-this"
+            <% } %> ><a href="/product/sort"><span>产品分类</span></a></dd>
+            <dd <% if(locals.page == "productList"){ %>
+                class="layui-this"
+            <% } %> ><a href="/product/list"><span>产品列表</span></a></dd>
+        </dl>
     </li>
     <li class="layui-nav-item layui-nav-itemed">
         <a <% if(locals.page == "news"){ %>

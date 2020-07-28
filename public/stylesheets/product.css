@@ -1,0 +1,9 @@
+.addSort,.addList{
+    width: 90%;
+    margin: 20px auto;
+}
+.addSort img,.addList img{
+    width: 200px;
+    height: 200px;
+    margin: 0 0 15px 116px;
+}

@@ -1,0 +1,36 @@
+<div class="newsList">
+
+    <div class="newsListSearch productSortTable">
+            <div class="layui-form-item">
+                <label class="layui-form-label">名称</label>
+                <div class="layui-input-block">
+                    <input type="text" id="productSortTitle" name="title" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" data-type="reloadSort">搜索</button>
+            </div>
+    </div>
+    <div class="newsListTableDiv">
+        <div class="layui-btn-group productSortTable">
+            <button class="layui-btn" data-type="addSort">新增</button>
+            <button class="layui-btn" data-type="editSort">编辑</button>
+            <button class="layui-btn" data-type="deleteSort">删除</button>
+        </div>
+        
+        <table class="layui-table" lay-data="{ url:'/product/getSort', id:'idproductSortTable',limit:20,height:'full-300',cellMinWidth: 50, page:{layout: ['count', 'prev', 'page', 'next', 'skip']}}" lay-filter="productSortTable">
+            <thead>
+                <tr>
+                    <th lay-data="{type:'checkbox'}"></th>
+                    <th lay-data="{field:'indexTpl',width:50,type:'numbers'}">序号</th>
+                    <th lay-data="{field:'name'}">名称</th>
+                    <th lay-data="{field:'description'}">描述</th>
+                    <th lay-data="{field:'img_url'}">图片地址</th>
+                </tr>
+            </thead>
+        </table>
+        <script type="text/html" id="indexTpl">
+            {{d.LAY_TABLE_INDEX+1}}
+        </script>
+    </div>
+</div>

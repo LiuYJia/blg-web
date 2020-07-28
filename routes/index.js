@@ -21,7 +21,7 @@ router.use('/login', require('./backend/login'));// 登陆
 
 router.use('/home', require('./backend/bhome'));// 主页
 
-router.use('/product', require('./backend/product'));// 产品展示
+router.use('/product', require('./backend/product'));// 产品管理
 
 router.use('/news', require('./backend/news'));// 资讯中心
 
