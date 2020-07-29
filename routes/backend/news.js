@@ -3,11 +3,21 @@ var router = express.Router();
 var db = require('../../database/database')
 
 router.get('/' , function(req,res,next){
-    res.render('backend/index',{
-        title:'资讯中心',
-        page:'news',
-        user:req.cookies.user
+
+    var _sql = 'select * from products_sort'
+    db.on('connection',function(){})
+    db.getConnection(function(err,connection){
+        connection.query(_sql,function(err,result){
+            res.render('backend/index',{
+                title:'资讯中心',
+                page:'news',
+                user:req.cookies.user,
+                result:result
+            })
+            connection.release()
+        })
     })
+    
 })
 
 

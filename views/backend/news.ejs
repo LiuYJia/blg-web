@@ -8,14 +8,14 @@
                 </div>
             </div>
             <div class="layui-form-item">
-                <button class="layui-btn" data-type="reload">搜索</button>
+                <button class="layui-btn" data-type="reloadNews">搜索</button>
             </div>
     </div>
     <div class="newsListTableDiv">
         <div class="layui-btn-group newsListTable">
-            <button class="layui-btn" data-type="add">新增</button>
-            <button class="layui-btn" data-type="edit">编辑</button>
-            <button class="layui-btn" data-type="delete">删除</button>
+            <button class="layui-btn" data-type="addNews">新增</button>
+            <button class="layui-btn" data-type="editNews">编辑</button>
+            <button class="layui-btn" data-type="deleteNews">删除</button>
         </div>
         
         <table class="layui-table" lay-data="{ url:'/news/getList', id:'idnewsListTable',limit:10,height:'full-300',cellMinWidth: 50, page:{layout: ['count', 'prev', 'page', 'next', 'skip']}}" lay-filter="newsListTable">

@@ -7,6 +7,7 @@
         <link rel='stylesheet' href='/stylesheets/home.css' />
         <link rel='stylesheet' href='/stylesheets/adminMessage.css' />
         <link rel='stylesheet' href='/stylesheets/friendLink.css' />
+        <link rel='stylesheet' href='/stylesheets/news.css' />
         <link rel='stylesheet' href='/stylesheets/product.css' />
         <link rel="stylesheet" href="/layui/css/layui.css">   
         <link rel="shortcut icon" href="#" /> 
@@ -77,6 +78,9 @@
 <script src="/jquery/jquery-3.4.1.min.js"></script>
 
 <% if(locals.page == 'news'){ %>
+    <script>
+        var result = '<%- JSON.stringify(result) %>';
+    </script>
     <script src="/javascript/news.js"></script>
 <% } %>
 

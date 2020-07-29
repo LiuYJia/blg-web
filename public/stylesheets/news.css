@@ -1,21 +1,21 @@
-.friendLinkList{
+.newsList{
     height: calc(100% - 40px);
     padding: 20px 20px;
 }
-.friendLinkListSearch{
+.newsListSearch{
     height: 60px;
 }
-.friendLinkListTableDiv{
+.newskListTableDiv{
     height: calc(100% - 140px);
 }
-.friendLinkListSearch{
+.newsListSearch{
     display: flex;
 }
-.friendLinkList .layui-form-item button{
+.newsList .layui-form-item button{
     margin-left: 50px;
 }
 
-.addFriendLink{
+.addnews{
     width: 90%;
     margin-top: 20px;
 }

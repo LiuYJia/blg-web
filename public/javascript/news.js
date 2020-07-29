@@ -1,15 +1,18 @@
 //列表
 var layuiForm = null;
+var layEdit = null;
+var layEditIndex = null;
 var table = null;
 var _checkId = null;
-
+var _sortArr = JSON.parse(result)
+console.log(_sortArr)
 layui.use('table', function(){
     table = layui.table;
     var $ = layui.$, active = {
-        add: function(){ //新增
+        addNews: function(){ //新增
             handelLink(1)
         },
-        edit: function(){ //编辑
+        editNews: function(){ //编辑
             var checkStatus = table.checkStatus('idnewsListTable'),data = checkStatus.data;
             if(data.length==0){
                 layer.msg('请选择一条记录',{icon:5});
@@ -21,7 +24,7 @@ layui.use('table', function(){
             }
             handelLink(2,data[0])
         },
-        delete: function(){ //删除
+        deleteNews: function(){ //删除
             var checkStatus = table.checkStatus('idnewsListTable'),data = checkStatus.data;
             if(data.length==0){
                 layer.msg('请选择一条记录',{icon:5});
@@ -54,7 +57,7 @@ layui.use('table', function(){
                 }
             })
         },
-        reload: function(){
+        reloadNews: function(){
             //执行重载
             table.reload('idnewsListTable', {
                 page: {
@@ -83,22 +86,22 @@ function handelLink(_type,checkData){
     var _html = `
         <div class="layui-form addnews" lay-filter="addnews">
             <div class="layui-form-item">
-                <label class="layui-form-label">网站名称</label>
+                <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
-                    <input type="text" name="webName" value="" required  lay-verify="required" placeholder="请输入网站名称" autocomplete="off" class="layui-input">
+                    <input type="text" name="title" value="" required  lay-verify="required" placeholder="请输入网站名称" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">网址</label>
-                <div class="layui-input-block">
-                    <input type="text" name="webUrl" value="" required  lay-verify="required" placeholder="请输入网址" autocomplete="off" class="layui-input">
+                <label class="layui-form-label">分类</label>
+                <div class="layui-input-block addnewsSort">
+                    <select name="addnewsSort" lay-filter="addnewsSort" id="addnewsSort" class="layui-select">
+                    </select>
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">是否互链</label>
+                <label class="layui-form-label">内容</label>
                 <div class="layui-input-block">
-                    <input type="radio" name="link" value="1" title="是">
-                    <input type="radio" name="link" value="0" title="否">
+                    <textarea id="addNews" style="display: none;"></textarea>
                 </div>
             </div>
         </div>
@@ -107,12 +110,15 @@ function handelLink(_type,checkData){
     layer.open({
         title:_title,
         type: 1, 
-        area: ['500px', '300px'],
+        area: ['900px', '600px'],
         btn: ['保存', '取消'],
         content: _html,
         yes:function(layerindex){
             var data = layuiForm.val("addnews");
-            if(!data.webName || !data.webUrl || !data.link){
+
+            var content = layEdit.getContent(layEditIndex)
+            console.log(content)
+            if(!data.title ){
                 layer.msg('请完善信息',{icon:5});
                 return
             }
@@ -147,9 +153,23 @@ function handelLink(_type,checkData){
             
         },
         success:function(){
-            layui.use('form', function(){
+            layui.use(['form','layedit'], function(){
                 layuiForm = layui.form;
+
+                layEdit = layui.layedit;
+                layEditIndex = layEdit.build('addNews'); //建立编辑器
+
+
+                var _sortHtml = '<option value=""></option>'
+                _sortArr.forEach(function(ele){
+                    var _item = `<option value="${ele.id}">${ele.name}</option>`
+                    _sortHtml += _item
+                })
+                $('.addnewsSort select').html(_sortHtml)
+
                 layuiForm.render()
+
+
                 if(_type == 2){
                     layuiForm.val("addnews", {
                        "webName": checkData.web_name,
