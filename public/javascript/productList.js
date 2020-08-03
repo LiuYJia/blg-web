@@ -29,33 +29,43 @@ layui.use('table', function(){
                 layer.msg('请选择一条记录',{icon:5});
                 return
             }
-            var arr = []
-            data.forEach(e => {
-                arr.push(e.id)
-            });
-            $.ajax({
-                url:'/product/deleteList',
-                type:'post',
-                data:{ids:arr.join(',')},
-                success:function(d){
-                    if(d.code==200){
-                        layer.msg(d.msg,{icon:1});
-                        table.reload('idproductListTable', {
-                            page: {
-                                curr: 1 //重新从第 1 页开始
-                            },
-                            where: {
-                                key: {
-                                    title: '',
-                                    sort: ''
-                                }
+            layer.open({
+                title:'提示',
+                btn: ['确定', '取消'],
+                content: '您确定删除吗？',
+                yes:function(index, layero){
+                    var arr = []
+                    data.forEach(e => {
+                        arr.push(e.id)
+                    });
+                    $.ajax({
+                        url:'/product/deleteList',
+                        type:'post',
+                        data:{ids:arr.join(',')},
+                        success:function(d){
+                            if(d.code==200){
+                                layer.msg(d.msg,{icon:1});
+                                table.reload('idproductListTable', {
+                                    page: {
+                                        curr: 1 //重新从第 1 页开始
+                                    },
+                                    where: {
+                                        key: {
+                                            title: '',
+                                            sort: ''
+                                        }
+                                    }
+                                }, 'data');
+                            }else{
+                                layer.msg(d.msg,{icon:5});
                             }
-                        }, 'data');
-                    }else{
-                        layer.msg(d.msg,{icon:5});
-                    }
+                        }
+                    })
+                },
+                no:function(index, layero){
+                    layer.close(index)
                 }
-            })
+            });
         },
         reloadList: function(){
             //执行重载
@@ -130,8 +140,7 @@ function handelList(_type,checkData){
         yes:function(layerindex){
             var data = layuiForm.val("addList");
             data.file = _imgUrl
-
-            if(!data.name || !_imgUrl || !data.desc){
+            if(!data.name || !data.addSort || !_imgUrl || !data.desc){
                 layer.msg('请完善信息',{icon:5});
                 return
             }
@@ -193,19 +202,19 @@ function handelList(_type,checkData){
                     _sortHtml += _item
                 })
                 $('.addListSort select').html(_sortHtml)
+
                 if(_type == 2){
-                    console.log(checkData)
                     layuiForm.val("addList", {
                        "name": checkData.name,
-                       "desc": checkData.description
+                       "addSort":checkData.sort_id,
+                       "desc": checkData.detail
                     });
                     _imgUrl = checkData.img_url
                     $('.uploadImg').html(`<img src=${checkData.img_url}>`)
-                   
+                    
                     _checkId = checkData.id
                 }
-
-
+                
                 layuiForm.render()
             });
         }

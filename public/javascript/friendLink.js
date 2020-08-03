@@ -27,32 +27,42 @@ layui.use('table', function(){
                 layer.msg('请选择一条记录',{icon:5});
                 return
             }
-            var arr = []
-            data.forEach(e => {
-                arr.push(e.id)
-            });
-            $.ajax({
-                url:'/friendLink/delelte',
-                type:'post',
-                data:{ids:arr.join(',')},
-                success:function(d){
-                    if(d.code==200){
-                        layer.msg(d.msg,{icon:1});
-                        table.reload('idfriendLinkListTable', {
-                            page: {
-                                curr: 1 //重新从第 1 页开始
-                            },
-                            where: {
-                                key: {
-                                    title: ''
-                                }
+            layer.open({
+                title:'提示',
+                btn: ['确定', '取消'],
+                content: '您确定删除吗？',
+                yes:function(index, layero){
+                    var arr = []
+                    data.forEach(e => {
+                        arr.push(e.id)
+                    });
+                    $.ajax({
+                        url:'/friendLink/delelte',
+                        type:'post',
+                        data:{ids:arr.join(',')},
+                        success:function(d){
+                            if(d.code==200){
+                                layer.msg(d.msg,{icon:1});
+                                table.reload('idfriendLinkListTable', {
+                                    page: {
+                                        curr: 1 //重新从第 1 页开始
+                                    },
+                                    where: {
+                                        key: {
+                                            title: ''
+                                        }
+                                    }
+                                }, 'data');
+                            }else{
+                                layer.msg(d.msg,{icon:5});
                             }
-                        }, 'data');
-                    }else{
-                        layer.msg(d.msg,{icon:5});
-                    }
+                        }
+                    })
+                },
+                no:function(index, layero){
+                    layer.close(index)
                 }
-            })
+            });
         },
         reload: function(){
             //执行重载

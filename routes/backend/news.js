@@ -24,12 +24,13 @@ router.get('/' , function(req,res,next){
 router.get('/getList' , function(req,res,next){
     if(req.query.key){
         var title = req.query.key.title
-        var _sql = 'select * from news where 1 = 1';
+        var _sql = 'select pl.*,ps.name as sort_name from news pl left join products_sort ps on pl.sort = ps.id where 1 = 1'
+        // var _sql = 'select * from news where 1 = 1';
         if(title){
             _sql += ' and title like "%' + title +'%" '
         }
     }else{
-        var _sql = 'select * from news'
+        var _sql = 'select pl.*,ps.name as sort_name from news pl left join products_sort ps on pl.sort = ps.id'
     }
     var page = Number(req.query.page)
     var limit = Number(req.query.limit)
@@ -53,23 +54,23 @@ router.get('/getList' , function(req,res,next){
     })
 })
 
-router.post('/handelLink' , function(req,res,next){
+router.post('/addNews' , function(req,res,next){
     var id = req.body.id
     var obj = {
         id:req.body.id,
-        webName:req.body.webName,
-        webUrl:req.body.webUrl,
-        link:req.body.link,
-        date:new Date(),
+        name:req.body.title,
+        addnewsSort:req.body.addnewsSort,
+        content:req.body.content,
+        time:new Date()
     }
+    console.log(obj)
     db.on('connection',function(err){})
     if(!id){
-        var _sql = 'insert into news (web_name,web_url,connect_time,inter_link) values (?,?,?,?)'
-        var _sqlArr = [obj.webName,obj.webUrl,obj.date,obj.link]
-
+        var _sql = 'insert into news (title,sort,content,time) values (?,?,?,?)'
+        var _sqlArr = [obj.name,obj.addnewsSort,obj.content,obj.time]
     }else{
-        var _sql = 'update news set web_name=?,web_url=?,connect_time=?,inter_link=? where id = ?'
-        var _sqlArr = [obj.webName,obj.webUrl,obj.date,obj.link,id]
+        var _sql = 'update news set title=?,sort=?,content=?,time=? where id = ?'
+        var _sqlArr = [obj.name,obj.addnewsSort,obj.content,obj.time,id]
     }
     db.getConnection(function(err,connection){
         connection.query(_sql,_sqlArr,function(err,result){
@@ -97,7 +98,7 @@ router.post('/delelte' , function(req,res,next){
     var ids = req.body.ids
     db.on('connection',function(){})
     db.getConnection(function(err,connection){
-        var _sql = 'delete from friend_link where id in ('+ids+')';
+        var _sql = 'delete from news where id in ('+ids+')';
         connection.query(_sql,function(err,result){
             if(result.affectedRows!=0){
                 res.send({

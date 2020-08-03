@@ -1,0 +1,74 @@
+.fproduct-content{
+    width: 80%;
+    margin: 91px 10% 0 10%;
+    min-height: calc(100vh - 151px);
+    display: flex;
+    align-items: flex-start;
+}
+.layui-nav-child a{
+    padding: 0 40px!important;
+}
+.fproduct-main{
+    flex: 1;
+    padding: 10px 20px;
+    color: rgb(150, 150, 150)!important;
+}
+.fproduct-bread{
+    border-bottom: 1px solid rgb(239, 239, 239);
+    padding: 0 0 20px 0;
+}
+.fproduct-list{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.fproduct-productItem img{
+    height: 50%;
+    width: 100%;
+}
+.fproduct-productItemTxt{
+    height: 50%;
+    text-align: center;
+}
+.fproduct-productItem{
+    margin-top: 20px;
+    background: white;
+    width: 22%;
+    height: 300px;
+    cursor: pointer;
+    border: 1px solid rgb(239, 239, 239);
+}
+.fproduct-productItem:hover,.fproduct-newsItem:hover{
+    box-shadow: rgb(200, 200, 200) 0px 0px 20px;;
+}
+.fproduct-productItemTxt h3{
+    height: 30px;
+    color:rgb(128, 127, 126);
+    line-height: 50px;
+}
+.fproduct-productItemTxt p{
+    height: 120px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    color: rgb(183, 183, 183);
+}
+/* .fproduct-content .layui-nav{
+    background-color: white;
+}
+.fproduct-content .layui-nav .layui-nav-item a{
+    color: rgb(150, 150, 150)!important;
+}
+.layui-nav{
+    border-right: 1px solid rgb(239, 239, 239);
+}
+.layui-nav-itemed>.layui-nav-child{
+    background-color: white!important;
+}
+.layui-nav-itemed>a .layui-nav-more{
+    border-color: transparent transparent rgb(150, 150, 150)!important;
+}
+.layui-nav .layui-nav-more{
+    border-color: rgb(150, 150, 150) transparent transparent!important;
+} */

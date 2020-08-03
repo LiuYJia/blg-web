@@ -4,18 +4,23 @@ var db = require('../../database/database')
 
 router.get('/' , function(req,res,next){
 
-    db.on('connection',function(d){})
+    // db.on('connection',function(d){})
 
-    db.getConnection(function(err,connection){
-        var _sql = 'select * from test';
-        connection.query(_sql,function(err,result){
-            res.render('frontend/fhome', {
-                title: '首页',
-                page:'fhome',
-                result:result
-            });
-            connection.release()
-        })
+    // db.getConnection(function(err,connection){
+    //     var _sql = 'select * from test';
+    //     connection.query(_sql,function(err,result){
+    //         res.render('frontend/fhome', {
+    //             title: '首页',
+    //             page:'fhome',
+    //             result:result
+    //         });
+    //         connection.release()
+    //     })
+    // })
+
+    res.render('frontend/fhome', {
+        title: '首页',
+        page:'fhome'
     })
     
 })

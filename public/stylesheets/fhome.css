@@ -5,39 +5,9 @@
     min-height: 100vh;
     width: 100%;
 }
-.fhome-header{
-    width: 100%;
-    height: 60px;
-    border-bottom: 1px solid rgb(239, 239, 239);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: rgb(125, 125, 125);
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: white;
-    z-index: 999;
-}
-.fhome-header-name{
-    margin-left: 10%;
-}
-.fhome .layui-nav{
-    /* width: 80%; */
-    padding:0 0;
-    background-color: white;
-    margin-right: 10%;
-}
 .layui-carousel{
     margin: 0 auto;
     margin-top: 80px;
-}
-.layui-nav .layui-nav-item a{
-    color: rgb(150, 150, 150)!important;
-}
-.layui-nav .layui-this:after, .layui-nav-bar, .layui-nav-tree .layui-nav-itemed:after{
-    height: 2px!important;
-    background-color: white;
 }
 .layui-nav .layui-this a{
     color: #409eff!important
@@ -46,8 +16,6 @@
     width: 80%;
     height: 60px;
     margin: 0 auto;
-    /* border-top: 1px solid rgb(239, 239, 239); */
-    /* border-bottom: 1px solid rgb(239, 239, 239); */
     display: flex;
     justify-content:space-around;
     padding: 20px 20px;
@@ -73,7 +41,7 @@
 .fhome-block{
     min-height: 300px;
 }
-.fhome-product,.fhome-news,.fhome-footer{
+.fhome-product,.fhome-news{
     background: #F7F7F7;
 }
 .fhome-productMsg{
@@ -174,14 +142,6 @@
 }
 .fhome-contact .layui-input-block{
     margin-left: 0;
-}
-.fhome-footer{
-    min-height: 60px;
-    text-align: center;
-    color: rgb(128, 127, 126);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 .fhome-newsMsg{
     width: 100%;

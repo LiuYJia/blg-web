@@ -5,12 +5,12 @@ var layEditIndex = null;
 var table = null;
 var _checkId = null;
 var _sortArr = JSON.parse(result)
-console.log(_sortArr)
+
 layui.use('table', function(){
     table = layui.table;
     var $ = layui.$, active = {
         addNews: function(){ //新增
-            handelLink(1)
+            handelNews(1)
         },
         editNews: function(){ //编辑
             var checkStatus = table.checkStatus('idnewsListTable'),data = checkStatus.data;
@@ -22,7 +22,7 @@ layui.use('table', function(){
                 layer.msg('只能选择一条记录',{icon:5});
                 return
             }
-            handelLink(2,data[0])
+            handelNews(2,data[0])
         },
         deleteNews: function(){ //删除
             var checkStatus = table.checkStatus('idnewsListTable'),data = checkStatus.data;
@@ -30,32 +30,42 @@ layui.use('table', function(){
                 layer.msg('请选择一条记录',{icon:5});
                 return
             }
-            var arr = []
-            data.forEach(e => {
-                arr.push(e.id)
-            });
-            $.ajax({
-                url:'/news/delelte',
-                type:'post',
-                data:{ids:arr.join(',')},
-                success:function(d){
-                    if(d.code==200){
-                        layer.msg(d.msg,{icon:1});
-                        table.reload('idnewsListTable', {
-                            page: {
-                                curr: 1 //重新从第 1 页开始
-                            },
-                            where: {
-                                key: {
-                                    title: ''
-                                }
+            layer.open({
+                title:'提示',
+                btn: ['确定', '取消'],
+                content: '您确定删除吗？',
+                yes:function(index, layero){
+                    var arr = []
+                    data.forEach(e => {
+                        arr.push(e.id)
+                    });
+                    $.ajax({
+                        url:'/news/delelte',
+                        type:'post',
+                        data:{ids:arr.join(',')},
+                        success:function(d){
+                            if(d.code==200){
+                                layer.msg(d.msg,{icon:1});
+                                table.reload('idnewsListTable', {
+                                    page: {
+                                        curr: 1 //重新从第 1 页开始
+                                    },
+                                    where: {
+                                        key: {
+                                            title: ''
+                                        }
+                                    }
+                                }, 'data');
+                            }else{
+                                layer.msg(d.msg,{icon:5});
                             }
-                        }, 'data');
-                    }else{
-                        layer.msg(d.msg,{icon:5});
-                    }
+                        }
+                    })
+                },
+                no:function(index, layero){
+                    layer.close(index)
                 }
-            })
+            });
         },
         reloadNews: function(){
             //执行重载
@@ -82,13 +92,13 @@ layui.use('table', function(){
 });
 
 
-function handelLink(_type,checkData){
+function handelNews(_type,checkData){
     var _html = `
         <div class="layui-form addnews" lay-filter="addnews">
             <div class="layui-form-item">
                 <label class="layui-form-label">标题</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" value="" required  lay-verify="required" placeholder="请输入网站名称" autocomplete="off" class="layui-input">
+                    <input type="text" name="title" value="" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -100,7 +110,7 @@ function handelLink(_type,checkData){
             </div>
             <div class="layui-form-item">
                 <label class="layui-form-label">内容</label>
-                <div class="layui-input-block">
+                <div class="layui-input-block addnewsContent">
                     <textarea id="addNews" style="display: none;"></textarea>
                 </div>
             </div>
@@ -114,20 +124,26 @@ function handelLink(_type,checkData){
         btn: ['保存', '取消'],
         content: _html,
         yes:function(layerindex){
+            
+            $('.addnewsContent iframe').contents().find("body").html("<p>是大哥说声</p><p>当时是烦得很</p><p>都是谁</p>")
+
+
+
             var data = layuiForm.val("addnews");
 
             var content = layEdit.getContent(layEditIndex)
             console.log(content)
-            if(!data.title ){
+            if(!data.title || !data.addnewsSort || !content){
                 layer.msg('请完善信息',{icon:5});
                 return
             }
-
+            data.content = content
+            console.log(data)
             if(_type == 2){
                 data.id = _checkId
             }
             $.ajax({
-                url:'/news/handelLink',
+                url:'/news/addNews',
                 type:'post',
                 data:data,
                 success:function(d){
@@ -171,12 +187,16 @@ function handelLink(_type,checkData){
 
 
                 if(_type == 2){
+                    console.log(checkData)
                     layuiForm.val("addnews", {
-                       "webName": checkData.web_name,
-                       "webUrl": checkData.web_url,
-                       "link": checkData.Inter_link == '是' ?  1 : 0
+                       "title": checkData.title,
+                       "addnewsSort": checkData.sort
                     });
 
+                    setTimeout(() => {
+                        $('.addnewsContent iframe').contents().find("body").html(checkData.content)
+                    }, 200);
+                    
                     _checkId = checkData.id
                 }
             });
