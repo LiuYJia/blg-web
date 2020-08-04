@@ -8,11 +8,11 @@ router.use('/', require('./frontend/fhome'));// 主页
 
 router.use('/fproduct', require('./frontend/fproduct'));// 产品列表
 
-// router.use('/about', require('./frontend/about'));// 关于我们
+router.use('/fabout', require('./frontend/fabout'));// 关于我们
 
-// router.use('/fnews', require('./frontend/news'));// 资讯中心
+router.use('/fnews', require('./frontend/fnews'));// 资讯中心
 
-// router.use('/contact', require('./frontend/contact'));// 联系我们
+router.use('/fcontact', require('./frontend/fcontact'));// 联系我们
 
 /**
  * 后台路由

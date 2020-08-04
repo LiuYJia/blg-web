@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= page %></title>
+        <meta name="Keywords" content="关键词关键" />
+        <meta name="Description" content="网页描述" />
+        <link rel='stylesheet' href='/stylesheets/fheaderFooter.css' />
+        <link rel='stylesheet' href='/stylesheets/fcontact.css' />
+        <link rel="stylesheet" href="/layui/css/layui.css">    
+        <link rel="shortcut icon" href="#" /> 
+    </head>
+    <body>
+        <div class="fcontact">
+            <!-- 头部&导航栏 -->
+            <% include ../component/fnavbar %>
+            
+            <!-- 联系我们 -->
+            <div class="fcontact-content">
+                <p>联系我们</p>
+                <p>Contact</p>
+                <div class="fcontact-blockContent">
+                    <div class="fcontact-contactMsg">
+                        <div class="fcontact-contactMsgTitle">名称名称名称名称</div>
+                        <ul>
+                            <li>地址：啊哈哈哈哈哈</li>
+                            <li>地址：啊哈哈哈哈哈</li>
+                            <li>地址：啊哈哈哈哈哈</li>
+                            <li>地址：啊哈哈哈哈哈</li>
+                            <li>地址：啊哈哈哈哈哈</li>
+                        </ul>
+                    </div>
+                    <div class="fcontact-contactForm layui-form">
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item layui-form-text">
+                            <div class="layui-input-block">
+                                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                            </div>
+                        </div>
+                        <button class="layui-btn layui-btn">提交</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 底部栏 -->
+            <div class="footer">
+                这里是底部
+            </div>
+        </div>
+    </body>
+    <script src="/layui/layui.js"></script>
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script>
+        layui.use('form', function(){
+            var form = layui.form;
+            form.render()
+        });
+    </script>
+</html>
