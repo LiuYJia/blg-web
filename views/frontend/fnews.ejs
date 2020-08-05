@@ -5,63 +5,47 @@
         <meta name="Keywords" content="关键词关键" />
         <meta name="Description" content="网页描述" />
         <link rel='stylesheet' href='/stylesheets/fheaderFooter.css' />
-        <link rel='stylesheet' href='/stylesheets/fproduct.css' />
+        <link rel='stylesheet' href='/stylesheets/fnews.css' />
         <link rel="stylesheet" href="/layui/css/layui.css">    
         <link rel="shortcut icon" href="#" /> 
     </head>
     <body>
-        <div class="fproduct">
+        <div class="fnews">
             <!-- 头部&导航栏 -->
             <% include ../component/fnavbar %>
             
             <!-- 产品列表 -->
-            <div class="fproduct-content">
-
+            <div class="fnews-content">
                 <ul class="layui-nav layui-nav-tree" lay-filter="test1">
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a href="javascript:;">默认展开</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">选项1</a></dd>
-                            <dd><a href="javascript:;">选项2</a></dd>
-                            <dd><a href="">跳转</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">解决方案</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">移动模块</a></dd>
-                            <dd><a href="">后台模版</a></dd>
-                            <dd><a href="">电商平台</a></dd>
-                        </dl>
-                    </li>
+                    <li class="layui-nav-item"><a href="">产品</a></li>
                     <li class="layui-nav-item"><a href="">产品</a></li>
                     <li class="layui-nav-item"><a href="">大数据</a></li>
+                    <li class="layui-nav-item"><a href="">产品</a></li>
+                    <li class="layui-nav-item"><a href="">产品</a></li>
+                    <li class="layui-nav-item"><a href="">产品</a></li>
                 </ul>
 
-                <div class="fproduct-main">
-                    <div class="fproduct-bread">
+                <div class="fnews-main">
+                    <div class="fnews-bread">
                         <span class="layui-breadcrumb">
                             <a href="">首页</a>
                             <a href="">国际新闻</a>
                             <a href="">亚太地区</a>
                             <a><cite>正文</cite></a>
-                          </span>
+                        </span>
                     </div>
-                    <div class="fproduct-list">
-
-                        <% for(var i=0;i<8;i++){ %>
-                            <div class="fproduct-productItem">
-                                <img src="/images/test3.png" alt="">
-                                <div class="fproduct-productItemTxt">
+                    <div class="fnews-list">
+                        <% for(var i=0;i<6;i++){ %>
+                            <div class="fnews-newsItem">
+                                <img src="/images/login.jpg" alt="">
+                                <div class="fnews-newsItemTxt">
                                     <h3>标题标题</h3>
-                                    <p>
-                                        这里是产品描述这里是产品描述这里是产品描述这里是产品描述
-                                        这里是产品描述这里是产品描述这品描
-                                    </p>
+                                    <div class="fnews-newsItemContent">
+                                        哈哈哈哈哈哈哈
+                                    </div>
                                 </div>
                             </div>
                         <% } %>
-
                     </div>
                 </div>
 
@@ -75,7 +59,7 @@
     </body>
     <script src="/layui/layui.js"></script>
     <script src="/jquery/jquery-3.4.1.min.js"></script>
-    <script src="/javascript/fproduct.js"></script>
+    <script src="/javascript/fnews.js"></script>
     <script>
     </script>
 </html>

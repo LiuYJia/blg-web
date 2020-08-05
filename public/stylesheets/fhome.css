@@ -165,10 +165,15 @@
 .fhome-newsItemTxt{
     flex: 1;
 }
+
 .fhome-newsItem h3{
     color:rgb(128, 127, 126);
+    height: 25px;
+    padding-left: 10px;
 }
 .fhome-newsItemContent{
     color: rgb(183, 183, 183);
+    height: calc(100% - 25px);
+    padding-left: 10px;
 }
 
