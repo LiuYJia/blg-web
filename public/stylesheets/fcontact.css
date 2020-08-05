@@ -1,0 +1,38 @@
+.fcontact-content{
+    width: 50%;
+    margin: 91px 25% 0 25%;
+    min-height: calc(100vh - 151px);
+}
+.fcontact-content p{
+    text-align: center;
+}
+.fcontact-content p:nth-child(1){
+    font-size: 22px;
+    color: rgb(128, 127, 126);
+}
+.fcontact-content p:nth-child(2){
+    color: rgb(183, 183, 183);
+}
+.fcontact-blockContent{
+    display: flex;
+    justify-content:space-around;
+}
+.fcontact-contactMsg,.fcontact-contactForm{
+    width: 50%;
+}
+.fcontact-content .layui-input-block{
+    margin-left: 0;
+}
+.fcontact-contactMsgTitle, .fcontact-contactForm{
+    margin-top: 30px;
+    font-size: 16px;
+    color: rgb(81, 81, 81);
+}
+.fcontact-content ul{
+    margin-top: 10px;
+    color: #A5A7A8;
+    font-size: 14px;
+}
+.fcontact-content ul li{
+    padding: 2px 0;
+}

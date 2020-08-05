@@ -1,0 +1,47 @@
+.fabout-content{
+    width: 80%;
+    margin: 91px 10% 0 10%;
+    min-height: calc(100vh - 151px);
+}
+.fabout-content p{
+    text-align: center;
+}
+.fabout-content p:nth-child(1){
+    font-size: 22px;
+    color: rgb(128, 127, 126);
+}
+.fabout-content p:nth-child(2){
+    color: rgb(183, 183, 183);
+}
+
+.fabout-txt{
+    margin-top: 30px;
+    color: rgb(128, 127, 126);
+    line-height: 28px;
+    display: flex;
+}
+.fabout-txt p{
+    text-align: left;
+    text-indent: 28px;
+}
+.fabout-content img{
+    height: 300px;
+    margin-right: 20px;
+}
+.fabout-idea{
+    border-top: 1px dashed rgb(200, 200, 200);
+    margin-top: 30px;
+    color: rgb(128, 127, 126);
+}
+.fabout-idea p{
+    text-align: left;
+}
+.fabout-idea p:nth-child(1){
+    font-size: 22px;
+    margin: 20px 0 20px 0;
+    color: rgb(128, 127, 126);
+}
+.fabout-idea p:nth-child(2){
+    line-height: 28px;
+    text-indent: 28px;
+}

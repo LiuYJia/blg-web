@@ -29,6 +29,8 @@ router.use('/friendLink', require('./backend/friendLink'));// 友情链接
 
 router.use('/adminMessage', require('./backend/adminMessage'));// 个人资料
 
+router.use('/company', require('./backend/company'));// 公司信息
+
 router.use('/error', require('./backend/error'));// 404
 
 //管理系统请求验证来源以及是否登陆

@@ -31,7 +31,10 @@
         <dl class="layui-nav-child">
             <dd <% if(locals.page == "adminMessage"){ %>
                 class="layui-this"
-            <% } %> ><a href="/adminMessage"><span>个人资料</span></a></dd>
+            <% } %> ><a href="/adminMessage"><span>网站设置</span></a></dd>
+            <dd <% if(locals.page == "company"){ %>
+                class="layui-this"
+            <% } %> ><a href="/company"><span>信息设置</span></a></dd>
         </dl>
     </li>
 </ul>

@@ -5,7 +5,6 @@
         <link rel='stylesheet' href='/stylesheets/index.css' />
         <link rel='stylesheet' href='/stylesheets/header.css' />
         <link rel='stylesheet' href='/stylesheets/home.css' />
-        <link rel='stylesheet' href='/stylesheets/adminMessage.css' />
         <link rel='stylesheet' href='/stylesheets/friendLink.css' />
         <link rel='stylesheet' href='/stylesheets/news.css' />
         <link rel='stylesheet' href='/stylesheets/product.css' />
@@ -65,6 +64,11 @@
                         <!-- 个人资料 -->
                         <% if(locals.page == 'adminMessage'){ %>
                             <% include ./adminMessage %>
+                        <% } %>
+
+                        <!-- 公司信息 -->
+                        <% if(locals.page == 'company'){ %>
+                            <% include ./company %>
                         <% } %>
                         
 
