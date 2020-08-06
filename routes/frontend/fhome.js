@@ -7,7 +7,7 @@ router.get('/' , function(req,res,next){
     db.on('connection',function(d){})
 
     db.getConnection(function(err,connection){
-        var _sql = 'select * from products_sort';
+        var _sql = 'select * from products_sort where isbase = 1';
         connection.query(_sql,function(err,result){
             res.render('frontend/fhome', {
                 title: '首页',

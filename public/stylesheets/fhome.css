@@ -5,6 +5,9 @@
     min-height: 100vh;
     width: 100%;
 }
+.fhome button a{
+    color: white;
+}
 .layui-carousel{
     margin: 0 auto;
     margin-top: 80px;

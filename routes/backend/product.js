@@ -15,7 +15,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get('/list' , function(req,res,next){
-    var _sql = 'select * from products_sort'
+    var _sql = 'select * from products_sort where isbase = 1'
     db.on('connection',function(){})
     db.getConnection(function(err,connection){
         connection.query(_sql,function(err,result){
