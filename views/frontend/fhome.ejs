@@ -52,14 +52,13 @@
                     </div>
                     <div class="fhome-productMsg">
 
-                        <% for(var i=0;i<8;i++){ %>
+                        <% for(var i=2;i<10;i++){ %>
                             <div class="fhome-productItem">
-                                <img src="/images/test3.png" alt="">
+                                <img src="<%= result[i].img_url %>" alt="">
                                 <div class="fhome-productItemTxt">
-                                    <h3>标题标题</h3>
+                                    <h3><%= result[i].name %></h3>
                                     <p>
-                                        这里是产品描述这里是产品描述这里是产品描述这里是产品描述
-                                        这里是产品描述这里是产品描述这品描
+                                        <%= result[i].description %>
                                     </p>
                                 </div>
                             </div>

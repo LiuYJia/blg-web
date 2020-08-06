@@ -8,7 +8,7 @@ router.get('/' , function(req,res,next){
     db.on('connection',function(err,connection){})
 
     db.getConnection(function(err,connection){
-        var _sql = 'select * from admin'
+        var _sql = 'select * from company_msg'
         connection.query(_sql,function(err,result){
             res.render('backend/index', {
                 title: '设置-个人资料',
@@ -29,16 +29,15 @@ router.post('/' , function(req,res,next){
     var address = req.body.address
     var email = req.body.email
     var postCode = req.body.postCode
-    var userName = req.body.userName
-    var passWord = req.body.passWord1
+    var phone = req.body.phone
+    var detail = req.body.detail
+    var idea = req.body.idea
+
     db.on('connection',function(err){})
     
     db.getConnection(function(err,connection){
-        var _sql = 'update admin set company_name=?,address=?,email=?,post_code=?,name = ?,password = ? where id = ?';
-        var md5 = crypto.createHash("md5");
-        var newPass = md5.update(passWord).digest("hex");
-        connection.query(_sql,[companyName,address,email,postCode,userName,newPass,id],function(err,result){
-            console.log(result)
+        var _sql = 'update company_msg set company_name=?,address=?,email=?,post_code=?,phone=?,company_detail=?,company_idea=? where id = ?';
+        connection.query(_sql,[companyName,address,email,postCode,phone,detail,idea,id],function(err,result){
             if(result.affectedRows==1){
                 res.send({
                     code:200,

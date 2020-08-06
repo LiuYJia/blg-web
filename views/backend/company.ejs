@@ -30,16 +30,22 @@
                 <input type="text" name="postCode" value="<%= result.post_code %>" required  lay-verify="required" placeholder="请输入邮编" autocomplete="off" class="layui-input">
             </div>
         </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系方式</label>
+            <div class="layui-input-block">
+                <input type="text" name="phone" value="<%= result.phone %>" required  lay-verify="required" placeholder="请输入电话" autocomplete="off" class="layui-input">
+            </div>
+        </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">公司简介</label>
             <div class="layui-input-block">
-              <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+              <textarea name="detail" placeholder="请输入公司简介" class="layui-textarea"  required  lay-verify="required"><%= result.company_detail %></textarea>
             </div>
           </div>
           <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">理念</label>
             <div class="layui-input-block">
-              <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+              <textarea name="idea" placeholder="请输入理念" class="layui-textarea"  required  lay-verify="required"><%= result.company_idea %></textarea>
             </div>
           </div>
         <div class="layui-form-item">

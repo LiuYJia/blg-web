@@ -23,22 +23,19 @@ router.get('/' , function(req,res,next){
 })
 
 router.post('/' , function(req,res,next){
-
     var id = req.body.id
-    var companyName = req.body.companyName
-    var address = req.body.address
-    var email = req.body.email
-    var postCode = req.body.postCode
+    var title = req.body.title
+    var keywords = req.body.keywords
+    var desc = req.body.desc
     var userName = req.body.userName
     var passWord = req.body.passWord1
     db.on('connection',function(err){})
     
     db.getConnection(function(err,connection){
-        var _sql = 'update admin set company_name=?,address=?,email=?,post_code=?,name = ?,password = ? where id = ?';
+        var _sql = 'update admin set home_title=?,home_keyword=?,home_description=?,name = ?,password = ? where id = ?';
         var md5 = crypto.createHash("md5");
         var newPass = md5.update(passWord).digest("hex");
-        connection.query(_sql,[companyName,address,email,postCode,userName,newPass,id],function(err,result){
-            console.log(result)
+        connection.query(_sql,[title,keywords,desc,userName,newPass,id],function(err,result){
             if(result.affectedRows==1){
                 res.send({
                     code:200,

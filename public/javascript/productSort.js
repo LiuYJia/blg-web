@@ -132,8 +132,8 @@ function handelSort(_type,checkData){
             var data = layuiForm.val("addSort");
             data.file = _imgUrl
 
-            if(!data.name || !_imgUrl || !data.desc){
-                layer.msg('请完善信息',{icon:5});
+            if(!data.name){
+                layer.msg('请填写名称',{icon:5});
                 return
             }
 
