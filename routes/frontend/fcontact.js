@@ -18,7 +18,7 @@ router.get('/' , function(req,res,next){
         title: '联系我们',
         page:'fcontact'
     });
-    
+
 })
 
 module.exports = router;

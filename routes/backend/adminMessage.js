@@ -23,6 +23,7 @@ router.get('/' , function(req,res,next){
 })
 
 router.post('/' , function(req,res,next){
+
     var id = req.body.id
     var title = req.body.title
     var keywords = req.body.keywords

@@ -28,19 +28,27 @@ layui.use('table', function(){
                 layer.msg('请选择一条记录',{icon:5});
                 return
             }
+            console.log(data)
+            
             layer.open({
                 title:'提示',
                 btn: ['确定', '取消'],
                 content: '您确定删除吗？',
                 yes:function(index, layero){
                     var arr = []
+                    var imgArr = []
                     data.forEach(e => {
                         arr.push(e.id)
+                        imgArr.push(e.img_url)
                     });
+                    var _param = {
+                        ids:arr.join(','),
+                        imgUrl:imgArr.join('&')
+                    }
                     $.ajax({
                         url:'/product/deleteSort',
                         type:'post',
-                        data:{ids:arr.join(',')},
+                        data:_param,
                         success:function(d){
                             if(d.code==200){
                                 layer.msg(d.msg,{icon:1});

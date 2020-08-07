@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../../database/database')
+var fs = require('fs');
 var multer = require('multer');
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -107,6 +108,16 @@ router.post('/addList' , function(req,res,next){
 })
 
 router.post('/deleteList' , function(req,res,next){
+    console.log(req)
+    // var filepath = './public/images/123.jpg';
+    // fs.unlink(filepath, function(err){
+    //     if(err){
+    //         throw err;
+    //     }
+    //     console.log('文件:'+filepath+'删除成功！');
+    // })
+
+
     var ids = req.body.ids
     db.on('connection',function(){})
     db.getConnection(function(err,connection){
@@ -206,11 +217,27 @@ router.post('/addSort' , function(req,res,next){
 
 router.post('/deleteSort' , function(req,res,next){
     var ids = req.body.ids
+    var imgIds = req.body.imgUrl
+    console.log(imgIds)
     db.on('connection',function(){})
     db.getConnection(function(err,connection){
         var _sql = 'delete from products_sort where id in ('+ids+')';
         connection.query(_sql,function(err,result){
             if(result.affectedRows != 0){
+
+                if(imgIds){
+                    imgIds.split('&').forEach(function(ele){
+                        var filepath = `./public${ele}`;
+                        fs.unlink(filepath, function(err){
+                            if(err){
+                                throw err;
+                            }
+                            console.log('文件:'+filepath+'删除成功！');
+                        })
+                    })
+                }
+                
+
                 res.send({
                     code:200,
                     msg: '删除成功'

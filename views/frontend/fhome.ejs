@@ -54,11 +54,11 @@
 
                         <% for(var i=0;i<8;i++){ %>
                             <div class="fhome-productItem">
-                                <img src="<%= result[i].img_url %>" alt="">
+                                <img src="<%= locals.sortArr[i].img_url %>" alt="">
                                 <div class="fhome-productItemTxt">
-                                    <h3><%= result[i].name %></h3>
+                                    <h3><%= locals.sortArr[i].name %></h3>
                                     <p>
-                                        <%= result[i].description %>
+                                        <%= locals.sortArr[i].description %>
                                     </p>
                                 </div>
                             </div>
@@ -144,9 +144,7 @@
             </div>
 
             <!-- 底部栏 -->
-            <div class="footer">
-                这里是底部
-            </div>
+            <%- include ../component/footer %>
             
         </div>
     </body>

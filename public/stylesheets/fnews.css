@@ -1,7 +1,7 @@
 .fnews-content{
     width: 80%;
     margin: 91px 10% 0 10%;
-    min-height: calc(100vh - 151px);
+    min-height: calc(100vh - 191px);
     display: flex;
     align-items: flex-start;
 }
