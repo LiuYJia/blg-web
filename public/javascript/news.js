@@ -125,9 +125,7 @@ function handelNews(_type,checkData){
         content: _html,
         yes:function(layerindex){
             
-            $('.addnewsContent iframe').contents().find("body").html("<p>是大哥说声</p><p>当时是烦得很</p><p>都是谁</p>")
-
-
+            // $('.addnewsContent iframe').contents().find("body").html("<p>是大哥说声</p><p>当时是烦得很</p><p>都是谁</p>")
 
             var data = layuiForm.val("addnews");
 
@@ -138,6 +136,8 @@ function handelNews(_type,checkData){
                 return
             }
             data.content = content
+            data.contentTxt = layEdit.getText(layEditIndex)
+            
             console.log(data)
             if(_type == 2){
                 data.id = _checkId

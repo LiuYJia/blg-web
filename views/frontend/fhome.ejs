@@ -95,13 +95,13 @@
                     </div>
                     <div class="fhome-newsMsg">
 
-                        <% for(var i=0;i<6;i++){ %>
+                        <% for(var i=0;i<locals.newsList.length;i++){ %>
                             <div class="fhome-newsItem">
                                 <img src="/images/login.jpg" alt="">
                                 <div class="fhome-newsItemTxt">
-                                    <h3>标题标题</h3>
+                                    <h3><%= locals.newsList[i].title %></h3>
                                     <div class="fhome-newsItemContent">
-                                        哈哈哈哈哈哈哈
+                                        <%= locals.newsList[i].content_txt %>
                                     </div>
                                 </div>
                             </div>

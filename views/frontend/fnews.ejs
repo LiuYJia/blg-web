@@ -16,32 +16,43 @@
             
             <!-- 产品列表 -->
             <div class="fnews-content">
-                <ul class="layui-nav layui-nav-tree" lay-filter="test1">
-                    <li class="layui-nav-item"><a href="">产品</a></li>
-                    <li class="layui-nav-item"><a href="">产品</a></li>
-                    <li class="layui-nav-item"><a href="">大数据</a></li>
-                    <li class="layui-nav-item"><a href="">产品</a></li>
-                    <li class="layui-nav-item"><a href="">产品</a></li>
-                    <li class="layui-nav-item"><a href="">产品</a></li>
+                <ul class="layui-nav layui-nav-tree">
+                    <li 
+                        <% if(locals.renderId == currId ){ %>
+                            class="layui-nav-item layui-this"
+                        <% }else{ %> 
+                            class="layui-nav-item"
+                        <% } %> 
+                        ><a href="/fnews">全部</a></li>
+
+                    <% for(var i=0;i<locals.sortArr.length;i++){ %>
+                        <% var currId = locals.sortArr[i].id %>
+                        <li 
+                        <% if(locals.renderId == currId ){ %>
+                            class="layui-nav-item layui-this"
+                        <% }else{ %> 
+                            class="layui-nav-item"
+                        <% } %> 
+                        ><a href="/fnews?id=<%= locals.sortArr[i].id %>"><%= locals.sortArr[i].name %></a></li>
+                    <% } %>
                 </ul>
 
                 <div class="fnews-main">
                     <div class="fnews-bread">
                         <span class="layui-breadcrumb">
-                            <a href="">首页</a>
-                            <a href="">国际新闻</a>
-                            <a href="">亚太地区</a>
+                            <a href="/">首页</a>
+                            <a href="/fnews">资讯中心</a>
                             <a><cite>正文</cite></a>
                         </span>
                     </div>
                     <div class="fnews-list">
-                        <% for(var i=0;i<6;i++){ %>
+                        <% for(var i=0;i<locals.newsList.length;i++){ %>
                             <div class="fnews-newsItem">
                                 <img src="/images/login.jpg" alt="">
                                 <div class="fnews-newsItemTxt">
-                                    <h3>标题标题</h3>
+                                    <h3><%= locals.newsList[i].title %></h3>
                                     <div class="fnews-newsItemContent">
-                                        哈哈哈哈哈哈哈
+                                        <%= locals.newsList[i].content_txt %>
                                     </div>
                                 </div>
                             </div>

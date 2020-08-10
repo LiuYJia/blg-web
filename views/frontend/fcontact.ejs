@@ -20,14 +20,13 @@
                 <p>Contact</p>
                 <div class="fcontact-blockContent">
                     <div class="fcontact-contactMsg">
-                        <div class="fcontact-contactMsgTitle">名称名称名称名称</div>
-                        <ul>
-                            <li>地址：啊哈哈哈哈哈</li>
-                            <li>地址：啊哈哈哈哈哈</li>
-                            <li>地址：啊哈哈哈哈哈</li>
-                            <li>地址：啊哈哈哈哈哈</li>
-                            <li>地址：啊哈哈哈哈哈</li>
-                        </ul>
+                        <div class="fcontact-contactMsgTitle"><%= locals.companyMsg.company_name %></div>
+                            <ul>
+                                <li>地址：<%= locals.companyMsg.address %></li>
+                                <li>邮编：<%= locals.companyMsg.post_code %></li>
+                                <li>电话：<%= locals.companyMsg.phone %></li>
+                                <li>邮箱：<%= locals.companyMsg.email %></li>
+                            </ul>
                     </div>
                     <div class="fcontact-contactForm layui-form">
                         <div class="layui-form-item">

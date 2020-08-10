@@ -4,7 +4,7 @@ var db = require('../../database/database')
 
 router.get('/' , function(req,res,next){
 
-    var _sql = 'select * from products_sort'
+    var _sql = 'select * from products_sort where isbase = 0'
     db.on('connection',function(){})
     db.getConnection(function(err,connection){
         connection.query(_sql,function(err,result){
@@ -61,16 +61,16 @@ router.post('/addNews' , function(req,res,next){
         name:req.body.title,
         addnewsSort:req.body.addnewsSort,
         content:req.body.content,
+        contentTxt:req.body.contentTxt,
         time:new Date()
     }
-    console.log(obj)
     db.on('connection',function(err){})
     if(!id){
-        var _sql = 'insert into news (title,sort,content,time) values (?,?,?,?)'
-        var _sqlArr = [obj.name,obj.addnewsSort,obj.content,obj.time]
+        var _sql = 'insert into news (title,sort,content,time,content_txt) values (?,?,?,?,?)'
+        var _sqlArr = [obj.name,obj.addnewsSort,obj.content,obj.time,obj.contentTxt]
     }else{
-        var _sql = 'update news set title=?,sort=?,content=?,time=? where id = ?'
-        var _sqlArr = [obj.name,obj.addnewsSort,obj.content,obj.time,id]
+        var _sql = 'update news set title=?,sort=?,content=?,time=?,content_txt=? where id = ?'
+        var _sqlArr = [obj.name,obj.addnewsSort,obj.content,obj.time,obj.contentTxt,id]
     }
     db.getConnection(function(err,connection){
         connection.query(_sql,_sqlArr,function(err,result){
