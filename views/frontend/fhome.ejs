@@ -117,13 +117,12 @@
                     <div class="fhome-blockTitle">联系我们<span>| CONTACT</span></div>
                     <div class="fhome-blockContent fhome-blockContentContact">
                         <div class="fhome-contactMsg">
-                            <div class="fhome-contactMsgTitle">名称名称名称名称</div>
+                            <div class="fhome-contactMsgTitle"><%= locals.companyMsg.company_name %></div>
                             <ul>
-                                <li>地址：啊哈哈哈哈哈</li>
-                                <li>地址：啊哈哈哈哈哈</li>
-                                <li>地址：啊哈哈哈哈哈</li>
-                                <li>地址：啊哈哈哈哈哈</li>
-                                <li>地址：啊哈哈哈哈哈</li>
+                                <li>地址：<%= locals.companyMsg.address %></li>
+                                <li>邮编：<%= locals.companyMsg.post_code %></li>
+                                <li>电话：<%= locals.companyMsg.phone %></li>
+                                <li>邮箱：<%= locals.companyMsg.email %></li>
                             </ul>
                         </div>
                         <div class="fhome-contactForm layui-form">

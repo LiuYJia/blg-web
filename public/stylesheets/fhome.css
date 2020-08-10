@@ -141,7 +141,7 @@
     font-size: 14px;
 }
 .fhome-contact ul li{
-    padding: 5px;
+    padding: 5px 0;
 }
 .fhome-contact .layui-input-block{
     margin-left: 0;

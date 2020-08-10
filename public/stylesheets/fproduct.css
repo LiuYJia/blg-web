@@ -54,6 +54,9 @@
     align-items: center;
     color: rgb(183, 183, 183);
 }
+.layui-tab-title .layui-this{
+    color: #409eff!important;
+}
 /* .fproduct-content .layui-nav{
     background-color: white;
 }

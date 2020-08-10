@@ -17,39 +17,29 @@
             <!-- 产品列表 -->
             <div class="fproduct-content">
 
-                <ul class="layui-nav layui-nav-tree" lay-filter="test1">
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a href="javascript:;">默认展开</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="javascript:;">选项1</a></dd>
-                            <dd><a href="javascript:;">选项2</a></dd>
-                            <dd><a href="">跳转</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;">解决方案</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="">移动模块</a></dd>
-                            <dd><a href="">后台模版</a></dd>
-                            <dd><a href="">电商平台</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item"><a href="">产品</a></li>
-                    <li class="layui-nav-item"><a href="">大数据</a></li>
+                <ul class="layui-nav layui-nav-tree" lay-filter="productSort">
+                    <% for(var i=0;i<locals.sortArr.length;i++){ %>
+                        <% var currId = locals.sortArr[i].id %>
+                        <li 
+                        <% if(locals.renderId == currId ){ %>
+                            class="layui-nav-item layui-this"
+                        <% }else{ %> 
+                            class="layui-nav-item"
+                        <% } %> 
+                        ><a href="/fproduct?id=<%= locals.sortArr[i].id %>"><%= locals.sortArr[i].name %></a></li>
+                    <% } %>
                 </ul>
-
+                
                 <div class="fproduct-main">
                     <div class="fproduct-bread">
                         <span class="layui-breadcrumb">
-                            <a href="">首页</a>
-                            <a href="">国际新闻</a>
-                            <a href="">亚太地区</a>
-                            <a><cite>正文</cite></a>
+                            <a href="/">首页</a>
+                            <a href="/fproduct">产品展示</a>
                         </span>
                     </div>
                     <div class="fproduct-list">
-
-                        <% for(var i=0;i<8;i++){ %>
+                        <%= JSON.stringify(locals) %>
+                        <!-- <% for(var i=0;i<8;i++){ %>
                             <div class="fproduct-productItem">
                                 <img src="/images/test3.png" alt="">
                                 <div class="fproduct-productItemTxt">
@@ -60,7 +50,7 @@
                                     </p>
                                 </div>
                             </div>
-                        <% } %>
+                        <% } %> -->
 
                     </div>
                 </div>

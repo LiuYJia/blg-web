@@ -10,22 +10,26 @@ router.get('/' , function(req,res,next){
         var _sqlNews = 'select * from news order by time desc limit 6';
         var _sqlKeywords = 'select home_title,home_keyword,home_description from admin where id = 1';
         var _sqlLink = 'select * from friend_link'
+        var _sqlCompany= 'select * from company_msg where id = 1'
         connection.query(_sqlSort,function(err,sortArr){
             connection.query(_sqlAbout,function(err,aboutMsg){
                 connection.query(_sqlNews,function(err,newsList){
                     connection.query(_sqlKeywords,function(err,pageMsg){
                         connection.query(_sqlLink,function(err,linkArr){
-                            console.log(newsList)
-                            res.render('frontend/fhome', {
-                                title: '首页',
-                                page:'fhome',
-                                sortArr:sortArr,
-                                aboutMsg:aboutMsg,
-                                newsList:newsList,
-                                pageMsg:pageMsg,
-                                linkArr:linkArr
-                            });
-                            connection.release()
+                            connection.query(_sqlCompany,function(err,companyMsg){
+                                console.log(companyMsg)
+                                res.render('frontend/fhome', {
+                                    title: '首页',
+                                    page:'fhome',
+                                    sortArr:sortArr,
+                                    aboutMsg:aboutMsg,
+                                    newsList:newsList,
+                                    pageMsg:pageMsg,
+                                    linkArr:linkArr,
+                                    companyMsg:companyMsg[0]
+                                });
+                                connection.release()
+                            })
                         })
                     })
                 })
@@ -33,14 +37,5 @@ router.get('/' , function(req,res,next){
         })
     })
 })
-
-router.get('/link' , function(req,res,next){
-    
-    var _url = req.url.split('=')[1]
-    res.location(`http://${_url}`)
-    // res.redirect(301,`http://${_url}`)
-    
-})
-
 
 module.exports = router;
