@@ -7,3 +7,7 @@
     height: 200px;
     margin: 0 0 15px 116px;
 }
+
+.productTable .layui-table-cell{
+    height: auto!important;
+}

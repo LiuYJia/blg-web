@@ -11,7 +11,7 @@
                 <button class="layui-btn" data-type="reloadSort">搜索</button>
             </div>
     </div>
-    <div class="newsListTableDiv">
+    <div class="newsListTableDiv productTable">
         <div class="layui-btn-group productSortTable">
             <button class="layui-btn" data-type="addSort">新增</button>
             <button class="layui-btn" data-type="editSort">编辑</button>
@@ -22,15 +22,22 @@
             <thead>
                 <tr>
                     <th lay-data="{type:'checkbox'}"></th>
-                    <th lay-data="{field:'indexTpl',width:50,type:'numbers'}">序号</th>
+                    <th lay-data="{field:'indexTplSort',width:50,type:'numbers'}">序号</th>
+                    <th lay-data="{field:'imgTpl',templet:'#imgTpl',width:80}">图片</th>
                     <th lay-data="{field:'name'}">名称</th>
-                    <th lay-data="{field:'description'}">描述</th>
-                    <th lay-data="{field:'img_url'}">图片地址</th>
+                    <th lay-data="{field:'description'}">详情</th>
+                    <th lay-data="{field:'sort_key'}">关键词</th>
+                    <th lay-data="{field:'sort_desc'}">网页描述</th>
                 </tr>
             </thead>
         </table>
-        <script type="text/html" id="indexTpl">
+        <script type="text/html" id="indexTplSort">
             {{d.LAY_TABLE_INDEX+1}}
+        </script>
+        <script type="text/html" id="imgTpl">
+            {{#  if(d.img_url){ }}
+                <img src="{{ d.img_url }}" style="width: 50px; height: 50px;">
+            {{#  } }}
         </script>
     </div>
 </div>

@@ -35,13 +35,19 @@ layui.use('table', function(){
                 content: '您确定删除吗？',
                 yes:function(index, layero){
                     var arr = []
+                    var imgArr = []
                     data.forEach(e => {
                         arr.push(e.id)
+                        imgArr.push(e.img_url)
                     });
+                    var _param = {
+                        ids:arr.join(','),
+                        imgUrl:imgArr.join('&')
+                    }
                     $.ajax({
                         url:'/product/deleteList',
                         type:'post',
-                        data:{ids:arr.join(',')},
+                        data:_param,
                         success:function(d){
                             if(d.code==200){
                                 layer.msg(d.msg,{icon:1});
@@ -128,13 +134,27 @@ function handelList(_type,checkData){
                 </div>
             </div>
 
+            <div class="layui-form-item">
+                <label class="layui-form-label">关键词</label>
+                <div class="layui-input-block">
+                    <input type="text" name="product_key" value="" required  lay-verify="required" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">网页描述</label>
+                <div class="layui-input-block">
+                    <textarea name="product_desc" placeholder="请输入网页描述" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
         </div>
     `;
     var _title = _type == 1 ? '新增' : '编辑';
     layer.open({
         title:_title,
         type: 1, 
-        area: ['700px', '500px'],
+        area: ['800px', '600px'],
         btn: ['保存', '取消'],
         content: _html,
         yes:function(layerindex){
@@ -207,11 +227,14 @@ function handelList(_type,checkData){
                     layuiForm.val("addList", {
                        "name": checkData.name,
                        "addSort":checkData.sort_id,
-                       "desc": checkData.detail
+                       "desc": checkData.detail,
+                       "product_key": checkData.product_key,
+                       "product_desc": checkData.product_desc
                     });
                     _imgUrl = checkData.img_url
-                    $('.uploadImg').html(`<img src=${checkData.img_url}>`)
-                    
+                    if(checkData.img_url){
+                        $('.uploadImg').html(`<img src=${checkData.img_url}>`)
+                    }
                     _checkId = checkData.id
                 }
                 

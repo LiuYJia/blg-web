@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>标题标题</title>
-        <meta name="Keywords" content="关键词关键" />
-        <meta name="Description" content="网页描述" />
+        <title><%= locals.pageMsg.home_title %></title>
+        <meta name="Keywords" content="<%= locals.pageMsg.home_keyword %>" />
+        <meta name="Description" content="<%= locals.pageMsg.home_description %>" />
         <link rel='stylesheet' href='/stylesheets/fhome.css' />
         <link rel='stylesheet' href='/stylesheets/fheaderFooter.css' />
         <link rel="stylesheet" href="/layui/css/layui.css">    
@@ -75,10 +75,7 @@
                         <div>关于我们<span>| ABOUT</span></div>
                     </div>
                     <div class="fhome-aboutMsg">
-                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息
-                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息
-                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息
-                        这里是公司信息这里是公司信息这里是公司信息这里是公司信息这里是公司信息。
+                        <%= locals.aboutMsg.company_detail %>
                     </div>
 
                     <button class="layui-btn layui-btn-sm moreBtn-about">更多</button>
@@ -125,18 +122,23 @@
                                 <li>邮箱：<%= locals.companyMsg.email %></li>
                             </ul>
                         </div>
-                        <div class="fhome-contactForm layui-form">
+                        <div class="fhome-contactForm layui-form" lay-filter="contact">
                             <div class="layui-form-item">
                                 <div class="layui-input-block">
-                                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                                    <input type="text" name="name" required  lay-verify="required" placeholder="请输入称呼" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <input type="text" name="phone" required  lay-verify="required" placeholder="请输入联系方式" autocomplete="off" class="layui-input">
                                 </div>
                             </div>
                             <div class="layui-form-item layui-form-text">
                                 <div class="layui-input-block">
-                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                    <textarea name="desc" placeholder="请输入您的建议" class="layui-textarea"></textarea>
                                 </div>
                             </div>
-                            <button class="layui-btn layui-btn">提交</button>
+                            <button class="layui-btn contactSubmit">提交</button>
                         </div>
                     </div>
                 </div>

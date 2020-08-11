@@ -22,9 +22,9 @@ router.get('/' , function(req,res,next){
                                     title: '首页',
                                     page:'fhome',
                                     sortArr:sortArr,
-                                    aboutMsg:aboutMsg,
+                                    aboutMsg:aboutMsg[0],
                                     newsList:newsList,
-                                    pageMsg:pageMsg,
+                                    pageMsg:pageMsg[0],
                                     linkArr:linkArr,
                                     companyMsg:companyMsg[0]
                                 });

@@ -28,18 +28,23 @@
                                 <li>邮箱：<%= locals.companyMsg.email %></li>
                             </ul>
                     </div>
-                    <div class="fcontact-contactForm layui-form">
+                    <div class="fcontact-contactForm layui-form" lay-filter="contact">
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                                <input type="text" name="name" required  lay-verify="required" placeholder="请输入称呼" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <input type="text" name="phone" required  lay-verify="required" placeholder="请输入联系方式" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-form-item layui-form-text">
                             <div class="layui-input-block">
-                                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                <textarea name="desc" placeholder="请输入您的建议" class="layui-textarea"></textarea>
                             </div>
                         </div>
-                        <button class="layui-btn layui-btn">提交</button>
+                        <button class="layui-btn contactSubmit">提交</button>
                     </div>
                 </div>
             </div>
@@ -51,9 +56,33 @@
     <script src="/layui/layui.js"></script>
     <script src="/jquery/jquery-3.4.1.min.js"></script>
     <script>
+        var layuiForm = null
         layui.use('form', function(){
-            var form = layui.form;
-            form.render()
+            layuiForm = layui.form;
+            layuiForm.render()
         });
+
+        $('.contactSubmit').off('click').on('click',function(){
+            var _data = layuiForm.val("contact");
+            var _reg1 = /^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/
+            if(!_reg1.test(_data.phone)){
+                layer.msg('请输入正确的联系方式',{icon:2});
+            }
+            $.ajax({
+                url:'/fcontact/submit',
+                type:'post',
+                data:_data,
+                success:function(d){
+                    if(d.code==200){
+                    $('.fhome-contactForm input[name="name"]').val('')
+                    $('.fhome-contactForm input[name="phone"]').val('')
+                    $('.fhome-contactForm textarea').val('')
+                    layer.msg(d.msg,{icon:1});
+                    }else{
+                    layer.msg(d.msg,{icon:5});
+                    }
+                }
+            })
+        })
     </script>
 </html>

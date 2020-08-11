@@ -74,16 +74,18 @@ router.post('/addList' , function(req,res,next){
         name:req.body.name,
         addSort:req.body.addSort,
         imgUrl:req.body.file,
-        description:req.body.desc
+        description:req.body.desc,
+        product_key:req.body.product_key,
+        product_desc:req.body.product_desc
     }
 
     db.on('connection',function(err){})
     if(!id){
-        var _sql = 'insert into products_list (name,sort_id,img_url,detail) values (?,?,?,?)'
-        var _sqlArr = [obj.name,obj.addSort,obj.imgUrl,obj.description]
+        var _sql = 'insert into products_list (name,sort_id,img_url,detail,product_key,product_desc) values (?,?,?,?,?,?)'
+        var _sqlArr = [obj.name,obj.addSort,obj.imgUrl,obj.description,obj.product_key,obj.product_desc]
     }else{
-        var _sql = 'update products_list set name=?,sort_id=?,img_url=?,detail=? where id = ?'
-        var _sqlArr = [obj.name,obj.addSort,obj.imgUrl,obj.description,id]
+        var _sql = 'update products_list set name=?,sort_id=?,img_url=?,detail=?,product_key=?,product_desc=? where id = ?'
+        var _sqlArr = [obj.name,obj.addSort,obj.imgUrl,obj.description,obj.product_key,obj.product_desc,id]
     }
     db.getConnection(function(err,connection){
         connection.query(_sql,_sqlArr,function(err,result){
@@ -108,22 +110,27 @@ router.post('/addList' , function(req,res,next){
 })
 
 router.post('/deleteList' , function(req,res,next){
-    console.log(req)
-    // var filepath = './public/images/123.jpg';
-    // fs.unlink(filepath, function(err){
-    //     if(err){
-    //         throw err;
-    //     }
-    //     console.log('文件:'+filepath+'删除成功！');
-    // })
-
-
     var ids = req.body.ids
+    var imgIds = req.body.imgUrl
+
     db.on('connection',function(){})
     db.getConnection(function(err,connection){
         var _sql = 'delete from products_list where id in ('+ids+')';
         connection.query(_sql,function(err,result){
             if(result.affectedRows != 0){
+                if(imgIds){
+                    imgIds.split('&').forEach(function(ele){
+                        if(ele){
+                            var filepath = `./public${ele}`;
+                            fs.unlink(filepath, function(err){
+                                if(err){
+                                    throw err;
+                                }
+                                console.log('文件:'+filepath+'删除成功！');
+                            })
+                        }
+                    })
+                }
                 res.send({
                     code:200,
                     msg: '删除成功'
@@ -182,16 +189,19 @@ router.post('/addSort' , function(req,res,next){
         id:req.body.id,
         name:req.body.name,
         imgUrl:req.body.file,
-        description:req.body.desc
+        description:req.body.desc,
+        sortKey:req.body.sort_key,
+        sortDesc:req.body.sort_desc,
+        isBase:req.body.isbase==0?0:1
     }
 
     db.on('connection',function(err){})
     if(!id){
-        var _sql = 'insert into products_sort (name,img_url,description) values (?,?,?)'
-        var _sqlArr = [obj.name,obj.imgUrl,obj.description]
+        var _sql = 'insert into products_sort (name,img_url,description,sort_key,sort_desc,isbase) values (?,?,?,?,?,?)'
+        var _sqlArr = [obj.name,obj.imgUrl,obj.description,obj.sortKey,obj.sortDesc,obj.isBase]
     }else{
-        var _sql = 'update products_sort set name=?,img_url=?,description=? where id = ?'
-        var _sqlArr = [obj.name,obj.imgUrl,obj.description,id]
+        var _sql = 'update products_sort set name=?,img_url=?,description=?,sort_key=?,sort_desc=?,isbase=? where id = ?'
+        var _sqlArr = [obj.name,obj.imgUrl,obj.description,obj.sortKey,obj.sortDesc,obj.isBase,id]
     }
     db.getConnection(function(err,connection){
         connection.query(_sql,_sqlArr,function(err,result){
@@ -227,13 +237,15 @@ router.post('/deleteSort' , function(req,res,next){
 
                 if(imgIds){
                     imgIds.split('&').forEach(function(ele){
-                        var filepath = `./public${ele}`;
-                        fs.unlink(filepath, function(err){
-                            if(err){
-                                throw err;
-                            }
-                            console.log('文件:'+filepath+'删除成功！');
-                        })
+                        if(ele){
+                            var filepath = `./public${ele}`;
+                            fs.unlink(filepath, function(err){
+                                if(err){
+                                    throw err;
+                                }
+                                console.log('文件:'+filepath+'删除成功！');
+                            })
+                        }
                     })
                 }
                 

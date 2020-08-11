@@ -74,7 +74,6 @@ layui.use('table', function(){
             });
         },
         reloadSort: function(){
-            console.log(999)
             //执行重载
             table.reload('idproductSortTable', {
                 page: {
@@ -111,6 +110,14 @@ function handelSort(_type,checkData){
             </div>
 
             <div class="layui-form-item">
+                <label class="layui-form-label">类别</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="isbase" value="1" title="产品">
+                    <input type="radio" name="isbase" value="0" title="资讯中心">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
                 <label class="layui-form-label">图片</label>
                 <div class="layui-input-block">
                     <button type="button" class="layui-btn" id="addSortImg">
@@ -121,9 +128,23 @@ function handelSort(_type,checkData){
             <div class="uploadImg"></div>
 
             <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">描述</label>
+                <label class="layui-form-label">详情</label>
                 <div class="layui-input-block">
-                    <textarea name="desc" placeholder="请输入描述" class="layui-textarea"></textarea>
+                    <textarea name="desc" placeholder="请输入详情" class="layui-textarea"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">关键词</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sort_key" value="" required  lay-verify="required" placeholder="请输入关键词" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">网页描述</label>
+                <div class="layui-input-block">
+                    <textarea name="sort_desc" placeholder="请输入网页描述" class="layui-textarea"></textarea>
                 </div>
             </div>
 
@@ -133,7 +154,7 @@ function handelSort(_type,checkData){
     layer.open({
         title:_title,
         type: 1, 
-        area: ['700px', '500px'],
+        area: ['800px', '600px'],
         btn: ['保存', '取消'],
         content: _html,
         yes:function(layerindex){
@@ -155,6 +176,7 @@ function handelSort(_type,checkData){
                 data:data,
                 success:function(d){
                     if(d.code==200){
+                        _imgUrl = ''
                         layer.close(layerindex)
                         layer.msg(d.msg,{icon:1});
                         table.reload('idproductSortTable', {
@@ -172,8 +194,9 @@ function handelSort(_type,checkData){
                     }
                 }
             })
-
-            
+        },
+        cancel:function(){
+            _imgUrl = ''
         },
         success:function(){
             layui.use(['form','upload'], function(){
@@ -200,13 +223,17 @@ function handelSort(_type,checkData){
 
 
                 if(_type == 2){
-                    console.log(checkData)
                     layuiForm.val("addSort", {
                        "name": checkData.name,
-                       "desc": checkData.description
+                       "isbase":checkData.isbase,
+                       "desc": checkData.description,
+                       "sort_key": checkData.sort_key,
+                       "sort_desc": checkData.sort_desc
                     });
                     _imgUrl = checkData.img_url
-                    $('.uploadImg').html(`<img src=${checkData.img_url}>`)
+                    if(checkData.img_url){
+                        $('.uploadImg').html(`<img src=${checkData.img_url}>`)
+                    }
                    
                     _checkId = checkData.id
                 }

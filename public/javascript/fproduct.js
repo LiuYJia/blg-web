@@ -6,7 +6,6 @@ layui.use(['element'], function(){
   
     //监听Tab切换，以改变地址hash值
     element.on('tab(productList)', function(){
-        console.log(111)
         console.log(this.getAttribute('lay-id'))
     });
 });
