@@ -128,9 +128,9 @@ function handelList(_type,checkData){
             <div class="uploadImg"></div>
 
             <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">描述</label>
+                <label class="layui-form-label">详情</label>
                 <div class="layui-input-block">
-                    <textarea name="desc" placeholder="请输入描述" class="layui-textarea"></textarea>
+                    <textarea name="desc" placeholder="请输入详情" class="layui-textarea"></textarea>
                 </div>
             </div>
 

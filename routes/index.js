@@ -8,6 +8,8 @@ router.use('/', require('./frontend/fhome'));// 主页
 
 router.use('/fproduct', require('./frontend/fproduct'));// 产品列表
 
+router.use('/fdetail', require('./frontend/fdetail'));// 产品详情
+
 router.use('/fabout', require('./frontend/fabout'));// 关于我们
 
 router.use('/fnews', require('./frontend/fnews'));// 资讯中心

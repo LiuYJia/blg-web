@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= locals.detailMsg.name %></title>
+        <meta name="Keywords" content="<%= locals.detailMsg.product_key %>" />
+        <meta name="Description" content="<%= locals.detailMsg.product_desc %>" />
+        <link rel='stylesheet' href='/stylesheets/fheaderFooter.css' />
+        <link rel='stylesheet' href='/stylesheets/fdetail.css' />
+        <link rel="stylesheet" href="/layui/css/layui.css">    
+        <link rel="shortcut icon" href="#" /> 
+    </head>
+    <body>
+        <div class="fdetail">
+            <!-- 头部&导航栏 -->
+            <% include ../component/fnavbar %>
+            
+            <!-- 详情 -->
+            <div class="fdetail-content">
+                <div class="fdetail-bread">
+                    <span class="layui-breadcrumb">
+                        <a href="/">首页</a>
+                        <a href="/fproduct">产品展示</a>
+                        <a href="/fproduct?id=<%= locals.detailMsg.sort_id %>"><%= locals.detailMsg.sort_name %></a>
+                        <a><cite><%= locals.detailMsg.name %></cite></a>
+                    </span>
+                </div>
+
+                <div class="fdetail-main">
+                    <div class="fdetail-img">
+                        <img src="<%= locals.detailMsg.img_url %>" alt="<%= locals.detailMsg.name %>">
+                        <p><%= locals.detailMsg.name %></p>
+                    </div>
+                    
+                    <div class="fdetail-text">
+                        <h1><%= locals.detailMsg.name %></h1>
+                        <p><%= locals.detailMsg.detail %></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部栏 -->
+            <%- include ../component/footer %>
+            
+        </div>
+    </body>
+    <script src="/layui/layui.js"></script>
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script>
+        layui.use('element', function(){});
+    </script>
+</html>

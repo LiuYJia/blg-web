@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>标题标题</title>
-        <meta name="Keywords" content="关键词关键" />
-        <meta name="Description" content="网页描述" />
+        <% for(var i=0;i<locals.sortArr.length;i++){ %>
+            <% if(locals.renderId == locals.sortArr[i].id ){ %>
+                <title><%= locals.sortArr[i].name %></title>
+                <meta name="Keywords" content="<%= locals.sortArr[i].sort_key %>" />
+                <meta name="Description" content="<%= locals.sortArr[i].sort_desc %>" />
+            <% } %> 
+        <% } %>
         <link rel='stylesheet' href='/stylesheets/fheaderFooter.css' />
         <link rel='stylesheet' href='/stylesheets/fproduct.css' />
         <link rel="stylesheet" href="/layui/css/layui.css">    
@@ -35,23 +39,27 @@
                         <span class="layui-breadcrumb">
                             <a href="/">首页</a>
                             <a href="/fproduct">产品展示</a>
+                            
+                            <% for(var i=0;i<locals.sortArr.length;i++){ %>
+                                <% if(locals.renderId == locals.sortArr[i].id ){ %>
+                                    <a><cite><%= locals.sortArr[i].name %></cite></a>
+                                <% } %> 
+                            <% } %>
+
                         </span>
                     </div>
                     <div class="fproduct-list">
-                        <%= JSON.stringify(locals) %>
-                        <!-- <% for(var i=0;i<8;i++){ %>
+                        <% for(var i=0;i<locals.productArr.length;i++){ %>
                             <div class="fproduct-productItem">
-                                <img src="/images/test3.png" alt="">
+                                <img src="<%= locals.productArr[i].img_url %>" alt="">
                                 <div class="fproduct-productItemTxt">
-                                    <h3>标题标题</h3>
+                                    <h3><%= locals.productArr[i].name %></h3>
                                     <p>
-                                        这里是产品描述这里是产品描述这里是产品描述这里是产品描述
-                                        这里是产品描述这里是产品描述这品描
+                                        <%= locals.productArr[i].detail %>
                                     </p>
                                 </div>
                             </div>
-                        <% } %> -->
-
+                        <% } %>
                     </div>
                 </div>
 
