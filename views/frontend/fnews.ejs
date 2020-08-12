@@ -39,21 +39,18 @@
 
                 <div class="fnews-main">
                     <div class="fnews-bread">
-                        <%= locals.renderId %>
-                        <%= JSON.stringify(locals.sortArr) %>
                         <span class="layui-breadcrumb">
                             <a href="/">首页</a>
                             <a href="/fnews">资讯中心</a>
-                            <%=: var _len = locals.sortArr.length | plus:1 %>
-                            <% for(var i=0;i<_len;i++){ %>
+                            <% for(var i=0;i<locals.sortArr.length;i++){ %>
                                 <% var currId = locals.sortArr[i].id %>
-                                <% if(locals.renderId && locals.renderId == currId ){ %>
+                                <% if(locals.renderId == currId ){ %>
                                     <a><cite><%= locals.sortArr[i].name %></cite></a>
-                                <% }else{ %> 
-                                    <a><cite>全部</cite></a>
-                                <% } %> 
+                                <% } %>
                             <% } %>
-                            
+                            <% if(!locals.renderId){ %>
+                                <a><cite>全部</cite></a>
+                            <% } %>
                         </span>
                     </div>
                     <div class="fnews-list">
