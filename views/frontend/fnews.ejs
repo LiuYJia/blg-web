@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><%= page %></title>
-        <meta name="Keywords" content="关键词关键" />
-        <meta name="Description" content="网页描述" />
+        <title><%= locals.pageMsg.home_title %></title>
+        <meta name="Keywords" content="<%= locals.pageMsg.home_keyword %>" />
+        <meta name="Description" content="<%= locals.pageMsg.home_description %>" />
         <link rel='stylesheet' href='/stylesheets/fheaderFooter.css' />
         <link rel='stylesheet' href='/stylesheets/fnews.css' />
         <link rel="stylesheet" href="/layui/css/layui.css">    
@@ -55,15 +55,14 @@
                     </div>
                     <div class="fnews-list">
                         <% for(var i=0;i<locals.newsList.length;i++){ %>
-                            <div class="fnews-newsItem">
-                                <img src="/images/login.jpg" alt="">
+                            <a class="fnews-newsItem" href="/fnewsDetail?id=<%= locals.newsList[i].id %>">
                                 <div class="fnews-newsItemTxt">
                                     <h3><%= locals.newsList[i].title %></h3>
                                     <div class="fnews-newsItemContent">
                                         <%= locals.newsList[i].content_txt %>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         <% } %>
                     </div>
                 </div>

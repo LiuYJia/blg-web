@@ -74,12 +74,12 @@
                 data:_data,
                 success:function(d){
                     if(d.code==200){
-                    $('.fhome-contactForm input[name="name"]').val('')
-                    $('.fhome-contactForm input[name="phone"]').val('')
-                    $('.fhome-contactForm textarea').val('')
-                    layer.msg(d.msg,{icon:1});
+                        $('.fcontact-contactForm input[name="name"]').val('')
+                        $('.fcontact-contactForm input[name="phone"]').val('')
+                        $('.fcontact-contactForm textarea').val('')
+                        layer.msg(d.msg,{icon:1});
                     }else{
-                    layer.msg(d.msg,{icon:5});
+                        layer.msg(d.msg,{icon:5});
                     }
                 }
             })

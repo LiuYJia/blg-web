@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= locals.detailMsg.title %></title>
+        <meta name="Keywords" content="<%= locals.detailMsg.title %>" />
+        <meta name="Description" content="<%= locals.detailMsg.content_txt %>" />
+        <link rel='stylesheet' href='/stylesheets/fheaderFooter.css' />
+        <link rel='stylesheet' href='/stylesheets/fnewsDetail.css' />
+        <link rel="stylesheet" href="/layui/css/layui.css">    
+        <link rel="shortcut icon" href="#" /> 
+    </head>
+    <body>
+        <div class="fnewsDetail">
+            <!-- 头部&导航栏 -->
+            <% include ../component/fnavbar %>
+            
+            <!-- 详情 -->
+            <div class="fnewsDetail-content">
+                <div class="fnewsDetail-bread">
+                    <span class="layui-breadcrumb">
+                        <a href="/">首页</a>
+                        <a href="/fnews">新闻资讯</a>
+                        <a href="/fnews?id=<%= locals.detailMsg.sort %>"><%= locals.detailMsg.sort_name %></a>
+                        <a><cite><%= locals.detailMsg.title %></cite></a>
+                    </span>
+                </div>
+
+                <div class="fnewsDetail-main">
+                    <h1><%= locals.detailMsg.title %></h1>
+                    <div class="fnewsDetail-time"><%= locals.detailMsg.time.toLocaleString() %></div>
+                    <div class="fnewsDetail-text">
+                        <%- locals.detailMsg.content %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 底部栏 -->
+            <%- include ../component/footer %>
+            
+        </div>
+    </body>
+    <script src="/layui/layui.js"></script>
+    <script src="/jquery/jquery-3.4.1.min.js"></script>
+    <script>
+        layui.use('element', function(){});
+    </script>
+</html>

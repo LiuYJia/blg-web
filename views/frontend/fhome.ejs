@@ -31,15 +31,15 @@
                     <p class="fhome-numItemB">成立</p>
                 </div>
                 <div class="fhome-numItem">
-                    <p class="fhome-numItemT fhome-numItemT2"></p>
+                    <p class="fhome-numItemT fhome-numItemT2"><span></span>+</p>
                     <p class="fhome-numItemB">服务</p>
                 </div>
                 <div class="fhome-numItem">
-                    <p class="fhome-numItemT fhome-numItemT3"></p>
+                    <p class="fhome-numItemT fhome-numItemT3"><span></span>+</p>
                     <p class="fhome-numItemB">客户</p>
                 </div>
                 <div class="fhome-numItem">
-                    <p class="fhome-numItemT fhome-numItemT4"></p>
+                    <p class="fhome-numItemT fhome-numItemT4"><span></span>+</p>
                     <p class="fhome-numItemB">产品</p>
                 </div>
             </div>
@@ -93,15 +93,14 @@
                     <div class="fhome-newsMsg">
 
                         <% for(var i=0;i<locals.newsList.length;i++){ %>
-                            <div class="fhome-newsItem">
-                                <img src="/images/login.jpg" alt="">
+                            <a class="fhome-newsItem" href="/fnewsDetail?id=<%= locals.newsList[i].id %>">
                                 <div class="fhome-newsItemTxt">
                                     <h3><%= locals.newsList[i].title %></h3>
                                     <div class="fhome-newsItemContent">
                                         <%= locals.newsList[i].content_txt %>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         <% } %>
                         
                     </div>
@@ -182,19 +181,19 @@
         })(jQuery);
 
         $(".fhome-numItemT1").numberRock({
-            speed:12,
+            speed:10,
             count:2003
         })
-        $(".fhome-numItemT2").numberRock({
-            speed:12,
+        $(".fhome-numItemT2 span").numberRock({
+            speed:10,
             count:1000
         })
-        $(".fhome-numItemT3").numberRock({
-            speed:12,
+        $(".fhome-numItemT3 span").numberRock({
+            speed:10,
             count:100
         })
-        $(".fhome-numItemT4").numberRock({
-            speed:12,
+        $(".fhome-numItemT4 span").numberRock({
+            speed:10,
             count:200
         })
     </script>

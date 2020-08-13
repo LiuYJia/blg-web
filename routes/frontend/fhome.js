@@ -17,7 +17,7 @@ router.get('/' , function(req,res,next){
                     connection.query(_sqlKeywords,function(err,pageMsg){
                         connection.query(_sqlLink,function(err,linkArr){
                             connection.query(_sqlCompany,function(err,companyMsg){
-                                console.log(companyMsg)
+                                console.log(newsList)
                                 res.render('frontend/fhome', {
                                     title: '首页',
                                     page:'fhome',

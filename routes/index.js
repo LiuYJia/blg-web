@@ -14,6 +14,8 @@ router.use('/fabout', require('./frontend/fabout'));// 关于我们
 
 router.use('/fnews', require('./frontend/fnews'));// 资讯中心
 
+router.use('/fnewsDetail', require('./frontend/fnewsDetail'));// 资讯中心
+
 router.use('/fcontact', require('./frontend/fcontact'));// 联系我们
 
 /**

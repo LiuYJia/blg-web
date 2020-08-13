@@ -14,19 +14,22 @@ router.get('/' , function(req,res,next){
         if(_id){
             _sqlNews += ` and sort = ${_id}`
         }
-        console.log(_sqlNews)
+        var _sqlKeywords = 'select home_title,home_keyword,home_description from admin where id = 1';
         connection.query(_sqlLink,function(err,linkArr){
             connection.query(_sqlNews,function(err,newsList){
                 connection.query(_sqlSort,function(err,sortArr){
-                    res.render('frontend/fnews', {
-                        title: '新闻',
-                        page:'fnews',
-                        linkArr:linkArr,
-                        newsList:newsList,
-                        sortArr:sortArr,
-                        renderId:_id
-                    });
-                    connection.release()
+                    connection.query(_sqlKeywords,function(err,pageMsg){
+                        res.render('frontend/fnews', {
+                            title: '新闻',
+                            page:'fnews',
+                            linkArr:linkArr,
+                            newsList:newsList,
+                            sortArr:sortArr,
+                            pageMsg:pageMsg[0],
+                            renderId:_id
+                        });
+                        connection.release()
+                    })
                 })
                 
             })
