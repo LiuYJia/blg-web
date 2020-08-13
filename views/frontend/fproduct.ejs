@@ -50,7 +50,7 @@
                     </div>
                     <div class="fproduct-list">
                         <% for(var i=0;i<locals.productArr.length;i++){ %>
-                            <div class="fproduct-productItem">
+                            <a class="fproduct-productItem" href="/fdetail?id=<%= locals.productArr[i].id %>">
                                 <img src="<%= locals.productArr[i].img_url %>" alt="">
                                 <div class="fproduct-productItemTxt">
                                     <h3><%= locals.productArr[i].name %></h3>
@@ -58,7 +58,7 @@
                                         <%= locals.productArr[i].detail %>
                                     </p>
                                 </div>
-                            </div>
+                            </a>
                         <% } %>
                     </div>
                 </div>

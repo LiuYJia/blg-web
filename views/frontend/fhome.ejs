@@ -27,19 +27,19 @@
             <!-- 数字信息 -->
             <div class="fhome-num">
                 <div class="fhome-numItem">
-                    <p class="fhome-numItemT">2003</p>
+                    <p class="fhome-numItemT fhome-numItemT1"></p>
                     <p class="fhome-numItemB">成立</p>
                 </div>
                 <div class="fhome-numItem">
-                    <p class="fhome-numItemT">2000+</p>
+                    <p class="fhome-numItemT fhome-numItemT2"></p>
                     <p class="fhome-numItemB">服务</p>
                 </div>
                 <div class="fhome-numItem">
-                    <p class="fhome-numItemT">2000+</p>
+                    <p class="fhome-numItemT fhome-numItemT3"></p>
                     <p class="fhome-numItemB">客户</p>
                 </div>
                 <div class="fhome-numItem">
-                    <p class="fhome-numItemT">100+</p>
+                    <p class="fhome-numItemT fhome-numItemT4"></p>
                     <p class="fhome-numItemB">产品</p>
                 </div>
             </div>
@@ -153,5 +153,49 @@
     <script src="/jquery/jquery-3.4.1.min.js"></script>
     <script src="/javascript/fhome.js"></script>
     <script>
+        (function($){
+            $.fn.numberRock=function(options){
+                var defaults={
+                    speed:24,
+                    count:100
+                };
+                var opts=$.extend({}, defaults, options);
+
+                var div_by = 100,
+                count=opts["count"],
+                speed = Math.floor(count / div_by),
+                sum=0,
+                $display = this,
+                run_count = 1,
+                int_speed = opts["speed"];
+                var int = setInterval(function () {
+                    if (run_count <= div_by&&speed!=0) {
+                        $display.text(sum=speed * run_count);
+                        run_count++;
+                    } else if (sum < count) {
+                        $display.text(++sum);
+                    } else {
+                        clearInterval(int);
+                    }
+                }, int_speed);
+            }
+        })(jQuery);
+
+        $(".fhome-numItemT1").numberRock({
+            speed:12,
+            count:2003
+        })
+        $(".fhome-numItemT2").numberRock({
+            speed:12,
+            count:1000
+        })
+        $(".fhome-numItemT3").numberRock({
+            speed:12,
+            count:100
+        })
+        $(".fhome-numItemT4").numberRock({
+            speed:12,
+            count:200
+        })
     </script>
 </html>
