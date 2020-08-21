@@ -1,3 +1,25 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>页面找不到了……</title>
+        <link rel="shortcut icon" href="#" /> 
+        <style>
+            a{
+                color: #409EFF;
+                text-decoration: none;
+                position: absolute;
+                left: calc((100% - 80px) / 2);
+                top: 100px;
+            }
+            img{
+                width: 100vw;
+                height: 100vh;
+                margin: -12px;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="/">回到首页</a>
+        <img src="/images/404.gif" alt="页面找不到了……">
+    </body>
+</html>
